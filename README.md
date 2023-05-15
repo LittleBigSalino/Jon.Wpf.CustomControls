@@ -1,4 +1,4 @@
-﻿
+﻿Sure, here's the updated README including the NumericUpDown control:
 
 # Jon.WPF.CustomControls
 
@@ -38,13 +38,14 @@ xmlns:custom="clr-namespace:Jon.WPF.CustomControls;assembly=Jon.WPF.CustomContro
 You can then use the controls like any other WPF control:
 
 ```xaml
-<custom:RgbColorPicker x:Name="MyColorPicker" />
+<custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
 ## Controls
 
 This library currently includes the following controls:
 
+- [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons.
 - [RgbColorPicker](./Docs/RGBColorPicker.md): A color picker control that allows users to select a color using RGB (Red, Green, Blue) components.
 - [ColorPaletteControl](./Docs/ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
 - [RatingControl](./Docs/RatingControl.md): A control for rating items on a scale.
@@ -52,6 +53,9 @@ This library currently includes the following controls:
 - [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
 - [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
 - [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object.
+- Coming Soon:
+    - CollectionControlDialog - View List or Observable Collection in a dialog window. Each can open up a seperate propertygrid dialog.
+    - Range Slider - Two bar slider where a range can be selected.
 
 Please refer to each control's documentation for more details.
 
@@ -65,4 +69,4 @@ This project is licensed under the MIT License. For more information, see the [L
 
 ## Contact
 
-If you have any questions, feel free to open an issue or submit a pull request. We appreciate your feedback and contributions!
+If you have any questions, feel free to reach out to us. You can contact us via [email](mailto:youremail@example.com) or create an issue on our [GitHub](https://github.com/yourusername/Jon.WPF.CustomControls/issues) page. We'll do our best to respond as quickly as possible.

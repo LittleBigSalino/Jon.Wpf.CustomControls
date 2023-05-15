@@ -1,17 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFrameworks>net7.0-windows;net6.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Wpf.CustomControls.MostWanted</Title>
+    <PackageProjectUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</PackageProjectUrl>
+    <Description>Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is built with .NET 7.0 and intended to provide developers with controls that are commonly used but not included in the standard WPF toolkit.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>Wpf Extended PropertyGrid ColorPicker Rating Custom Controls</PackageTags>
+    <PackAsTool>False</PackAsTool>
+    <AssemblyVersion>1.1</AssemblyVersion>
+    <FileVersion>1.1</FileVersion>
+    <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
+    <PackageIcon>wpfmostwanted.png</PackageIcon>
+    <Version>1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <None Remove="LICENSE.txt" />
+    <None Remove="README.md" />
+    <None Remove="wpfmostwanted.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wpfmostwanted.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wpfmostwanted.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
 </Project>

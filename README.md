@@ -45,13 +45,13 @@ You can then use the controls like any other WPF control:
 
 This library currently includes the following controls:
 
-- [RgbColorPicker](./RgbColorPicker.md): A color picker control that allows users to select a color using RGB (Red, Green, Blue) components.
-- [ColorPaletteControl](./ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
-- [RatingControl](./RatingControl.md): A control for rating items on a scale.
-- [TimePicker](./TimePicker.md): A time selection control.
-- [ToggleSwitch](./ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
-- [WatermarkTextbox](./WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
-- [PropertyGrid](./PropertyGrid.md): A control for displaying and editing the properties of an object.
+- [RgbColorPicker](./Docs/RgbColorPicker.md): A color picker control that allows users to select a color using RGB (Red, Green, Blue) components.
+- [ColorPaletteControl](./Docs/ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
+- [RatingControl](./Docs/RatingControl.md): A control for rating items on a scale.
+- [TimePicker](./Docs/TimePicker.md): A time selection control.
+- [ToggleSwitch](./Docs.ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
+- [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
+- [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object.
 
 Please refer to each control's documentation for more details.
 

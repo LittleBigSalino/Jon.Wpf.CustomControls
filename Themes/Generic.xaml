@@ -110,7 +110,6 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_HandleTranslateTransform"
                                             Storyboard.TargetProperty="X"
-                                            To="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
                                             Duration="0:0:0.3" />
                                     </Storyboard>
                                 </VisualState>

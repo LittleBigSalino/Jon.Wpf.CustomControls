@@ -1,5 +1,4 @@
-﻿Sure, here's the updated README including the NumericUpDown control:
-
+﻿
 # Jon.WPF.CustomControls
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
@@ -69,4 +68,4 @@ This project is licensed under the MIT License. For more information, see the [L
 
 ## Contact
 
-If you have any questions, feel free to reach out to us. You can contact us via [email](mailto:youremail@example.com) or create an issue on our [GitHub](https://github.com/yourusername/Jon.WPF.CustomControls/issues) page. We'll do our best to respond as quickly as possible.
+If you have any questions, feel free to reach out to us. You can contact us via [email](mailto:jonsales@jonmsales.com) or create an issue on our [GitHub](https://github.com/yourusername/Jon.WPF.CustomControls/issues) page. We'll do our best to respond as quickly as possible.

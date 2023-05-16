@@ -1205,7 +1205,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type local:CollectionControlDialog}">
+    <!--<Style TargetType="{x:Type local:CollectionControlDialog}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CollectionControlDialog}">
@@ -1237,6 +1237,89 @@
                                     Content="Remove" />
                             </StackPanel>
                         </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    <Style TargetType="{x:Type local:WizardControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WizardControl}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Margin="10"
+                                FontWeight="Bold"
+                                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CurrentPageNumber}" />
+                            <Border
+                                Grid.Row="1"
+                                BorderBrush="Black"
+                                BorderThickness=".5">
+                                <Image
+                                    Grid.Row="1"
+                                    Width="120"
+                                    Source="/Jon.Wpf.CustomControls;component/Themes/wizard2Tall.png"
+                                    Stretch="Uniform"
+                                    StretchDirection="Both" />
+                            </Border>
+                            <ItemsPresenter Grid.Row="1" Grid.Column="1" />
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Button
+                                    Width="75"
+                                    Margin="5"
+                                    Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BackCommand}"
+                                    Content="Back" />
+                                <Button
+                                    Width="75"
+                                    Margin="5"
+                                    Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NextCommand}"
+                                    Content="Next" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Default style for WizardPage  -->
+    <Style TargetType="{x:Type local:WizardPage}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WizardPage}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock
+                                Margin="5"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Text="{TemplateBinding Title}" />
+                            <TextBlock Margin="5" Text="{TemplateBinding Description}" />
+                            <ContentPresenter Margin="8" />
+                        </StackPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

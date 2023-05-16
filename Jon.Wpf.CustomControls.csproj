@@ -11,25 +11,42 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>Wpf Extended PropertyGrid ColorPicker Rating Custom Controls</PackageTags>
+    <PackageTags>Wpf Extended PropertyGrid ColorPicker Rating Custom Controls Converters Wizard NumericUpDown ColorPicker ToggleSwitch</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.4</AssemblyVersion>
-    <FileVersion>1.2</FileVersion>
+    <AssemblyVersion>1.5</AssemblyVersion>
+    <FileVersion>1.5</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.3</Version>
+    <Version>1.5</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\wizard.png" />
+    <None Remove="images\wizard2.png" />
+    <None Remove="images\wizard2Tall.png" />
+    <None Remove="images\wpfmostwanted.png" />
     <None Remove="LICENSE.txt" />
     <None Remove="README.md" />
+    <None Remove="Themes\wizard2Tall.png" />
     <None Remove="wpfmostwanted.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="images\wizard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\wizard2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\wizard2Tall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\wpfmostwanted.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -50,6 +67,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Themes\wizard2Tall.png" />
   </ItemGroup>
 
 </Project>

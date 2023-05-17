@@ -5,6 +5,11 @@ Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. Thi
 
 ![Banner](./Images/banner.png) 
 
+
+*New WizardControl*
+
+![WizardScreen](./Images/wizardscreen.png)
+
 ## Table of Contents
 
 - [About](#about)
@@ -88,7 +93,7 @@ Please note that the exact behavior of each converter may depend on its implemen
 
 ## Contributing
 
-We welcome contributions from everyone. Before you start, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to contribute to this project.
+We welcome contributions from everyone. If you have controls that are not already in this toolkit and would like to help make them available to others, also welcome. I'd love to build this out to include a wide variety of reusable tools. Before you start, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to contribute to this project.
 
 ## License
 

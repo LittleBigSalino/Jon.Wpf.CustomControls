@@ -24,6 +24,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\banner.png" />
+    <None Remove="images\controls1.png" />
+    <None Remove="images\controls2.png" />
     <None Remove="images\converters.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
@@ -36,13 +39,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="images\banner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\controls1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\controls2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\converters.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\wizard.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\wizard2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\wizard2Tall.png">

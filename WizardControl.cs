@@ -18,6 +18,8 @@ namespace Jon.Wpf.CustomControls
         public static readonly DependencyProperty CurrentPageNumberProperty = DependencyProperty.Register(
             "CurrentPageNumber", typeof(int), typeof(WizardControl), new PropertyMetadata(0));
 
+
+
         public int CurrentPageNumber
         {
             get { return (int)GetValue(CurrentPageNumberProperty); }

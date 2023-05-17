@@ -25,16 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\banner.png" />
-    <None Remove="images\controls1.png" />
-    <None Remove="images\controls2.png" />
-    <None Remove="images\converters.png" />
-    <None Remove="images\newTallWiz.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
-    <None Remove="images\wizard2Tall.png" />
-    <None Remove="images\wizardscreen.png" />
-    <None Remove="images\wpfmostwanted.png" />
     <None Remove="LICENSE.txt" />
     <None Remove="README.md" />
     <None Remove="Themes\newTallWiz.png" />
@@ -43,30 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="images\banner.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\controls1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\controls2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\converters.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\newTallWiz.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\wizard2Tall.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\wizardscreen.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\wpfmostwanted.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

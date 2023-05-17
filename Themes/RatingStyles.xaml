@@ -1,0 +1,433 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:Jon.Wpf.CustomControls">
+    <Style x:Key="RatingStarStyle" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="LightGray" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Data" Value="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16z" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="False">
+                <Setter Property="Cursor" Value="Hand" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="0">
+                <Setter Property="Fill" Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="1">
+                <Setter Property="Fill" Value="Gold" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="2">
+                <Setter Property="Fill" Value="Gold" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="3">
+                <Setter Property="Fill" Value="Gold" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="4">
+                <Setter Property="Fill" Value="Gold" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="5">
+                <Setter Property="Fill" Value="Gold" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="RatingHeartStyle" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="LightGray" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Data" Value="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="False">
+                <Setter Property="Cursor" Value="Hand" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="0">
+                <Setter Property="Fill" Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="1">
+                <Setter Property="Fill" Value="Red" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="3">
+                <Setter Property="Fill" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="4">
+                <Setter Property="Fill" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="5">
+                <Setter Property="Fill" Value="Red" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="RatingTomatoeStyle" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="LightGray" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Data" Value="M5.866 0L4.335 1.262l2.082 1.8c-2.629-.989-4.842 1.4-5.012 2.338 1.384-.323 2.24-.422 3.344-.335-7.042 4.634-4.978 13.148-1.434 16.094 5.784 4.612 13.77 3.202 17.91-1.316C27.26 13.363 22.993.65 10.86 2.766c.107-1.17.633-1.503 1.243-1.602-.89-1.493-3.67-.734-4.556 1.374C7.52 2.602 5.866 0 5.866 0zM4.422 7.217H6.9c2.673 0 2.898.012 3.55.202 1.06.307 1.868.973 2.313 1.904.05.106.092.206.13.305l7.623.008.027 2.912-2.745-.024v7.549l-2.982-.016v-7.522l-2.127.016a2.92 2.92 0 0 1-1.056 1.134c-.287.176-.3.19-.254.264.127.2 2.125 3.642 2.125 3.659l-3.39.019-2.013-3.376c-.034-.047-.122-.068-.344-.084l-.297-.02.037 3.48-3.075-.038zm3.016 2.288l.024.338c.014.186.024.729.024 1.206v.867l.582-.025c.32-.013.695-.049.833-.078.694-.146 1.048-.478 1.087-1.018.027-.378-.063-.636-.303-.87-.318-.309-.761-.416-1.733-.418Z" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="False">
+                <Setter Property="Cursor" Value="Hand" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="0">
+                <Setter Property="Fill" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="1">
+                <Setter Property="Fill" Value="Tomato" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="2">
+                <Setter Property="Fill" Value="Tomato" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="3">
+                <Setter Property="Fill" Value="Tomato" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="4">
+                <Setter Property="Fill" Value="Tomato" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="5">
+                <Setter Property="Fill" Value="Tomato" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="RatingCloverStyle" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="LightGray" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Data" Value="M12,11.18C15.3,8.18 17,6.64 17,4.69C17,3.19 15.75,2 14.25,2C13.39,2 12.57,2.36 12,3C11.43,2.36 10.61,2 9.69,2C8.19,2 7,3.25 7,4.75C7,6.64 8.7,8.18 12,11.18M11.18,12C8.18,8.7 6.64,7 4.69,7C3.19,7 2,8.25 2,9.75C2,10.61 2.36,11.43 3,12C2.36,12.57 2,13.39 2,14.31C2,15.81 3.25,17 4.75,17C6.64,17 8.18,15.3 11.18,12M12.83,12C15.82,15.3 17.36,17 19.31,17C20.81,17 22,15.75 22,14.25C22,13.39 21.64,12.57 21,12C21.64,11.43 22,10.61 22,9.69C22,8.19 20.75,7 19.25,7C17.36,7 15.82,8.7 12.83,12M12,12.82C8.7,15.82 7,17.36 7,19.31C7,20.81 8.25,22 9.75,22C10.61,22 11.43,21.64 12,21C12.57,21.64 13.39,22 14.31,22C15.81,22 17,20.75 17,19.25C17,17.36 15.3,15.82 12,12.82Z" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="False">
+                <Setter Property="Cursor" Value="Hand" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="0">
+                <Setter Property="Fill" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RatingControl}}" Value="1">
+                <Setter Property="Fill" Value="Brown" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="2">
+                <Setter Property="Fill" Value="Brown" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="3">
+                <Setter Property="Fill" Value="Brown" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="4">
+                <Setter Property="Fill" Value="Brown" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RatingValue, RelativeSource={RelativeSource AncestorType=local:RatingControl}}" Value="5">
+                <Setter Property="Fill" Value="Brown" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="HeartControlStyle" TargetType="{x:Type local:RatingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RatingControl}">
+                    <Grid>
+                        <Viewbox>
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    x:Name="Star1"
+                                    Style="{StaticResource RatingHeartStyle}"
+                                    Tag="1">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star1}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star2"
+                                    Style="{StaticResource RatingHeartStyle}"
+                                    Tag="2">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star2}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star3"
+                                    Style="{StaticResource RatingHeartStyle}"
+                                    Tag="3">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star3}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star4"
+                                    Style="{StaticResource RatingHeartStyle}"
+                                    Tag="4">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star4}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star5"
+                                    Style="{StaticResource RatingHeartStyle}"
+                                    Tag="5">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star5}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TomatoeControlStyle" TargetType="{x:Type local:RatingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RatingControl}">
+                    <Grid>
+                        <Viewbox>
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    x:Name="Star1"
+                                    Style="{StaticResource RatingTomatoeStyle}"
+                                    Tag="1">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star1}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star2"
+                                    Style="{StaticResource RatingTomatoeStyle}"
+                                    Tag="2">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star2}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star3"
+                                    Style="{StaticResource RatingTomatoeStyle}"
+                                    Tag="3">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star3}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star4"
+                                    Style="{StaticResource RatingTomatoeStyle}"
+                                    Tag="4">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star4}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star5"
+                                    Style="{StaticResource RatingTomatoeStyle}"
+                                    Tag="5">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star5}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CloverControlStyle" TargetType="{x:Type local:RatingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RatingControl}">
+                    <Grid>
+                        <Viewbox>
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    x:Name="Star1"
+                                    Style="{StaticResource RatingCloverStyle}"
+                                    Tag="1">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star1}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star2"
+                                    Style="{StaticResource RatingCloverStyle}"
+                                    Tag="2">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star2}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star3"
+                                    Style="{StaticResource RatingCloverStyle}"
+                                    Tag="3">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star3}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star4"
+                                    Style="{StaticResource RatingCloverStyle}"
+                                    Tag="4">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star4}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star5"
+                                    Style="{StaticResource RatingCloverStyle}"
+                                    Tag="5">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star5}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:RatingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RatingControl}">
+                    <Grid>
+                        <Viewbox>
+                            <StackPanel Orientation="Horizontal">
+
+                                <Path
+                                    x:Name="Star1"
+                                    Style="{StaticResource RatingStarStyle}"
+                                    Tag="1">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star1}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star2"
+                                    Style="{StaticResource RatingStarStyle}"
+                                    Tag="2">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star2}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star3"
+                                    Style="{StaticResource RatingStarStyle}"
+                                    Tag="3">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star3}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star4"
+                                    Style="{StaticResource RatingStarStyle}"
+                                    Tag="4">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star4}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                                <Path
+                                    x:Name="Star5"
+                                    Style="{StaticResource RatingStarStyle}"
+                                    Tag="5">
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
+                                            <b:InvokeCommandAction Command="{Binding MouseOverCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" />
+                                        </b:EventTrigger>
+                                        <b:EventTrigger EventName="MouseLeftButtonDown">
+                                            <b:InvokeCommandAction Command="{Binding ClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}" CommandParameter="{Binding ElementName=Star5}" />
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </Path>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

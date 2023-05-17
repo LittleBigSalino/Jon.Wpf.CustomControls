@@ -28,12 +28,15 @@
     <None Remove="images\controls1.png" />
     <None Remove="images\controls2.png" />
     <None Remove="images\converters.png" />
+    <None Remove="images\newTallWiz.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
     <None Remove="images\wizard2Tall.png" />
+    <None Remove="images\wizardscreen.png" />
     <None Remove="images\wpfmostwanted.png" />
     <None Remove="LICENSE.txt" />
     <None Remove="README.md" />
+    <None Remove="Themes\newTallWiz.png" />
     <None Remove="Themes\wizard2Tall.png" />
     <None Remove="wpfmostwanted.png" />
   </ItemGroup>
@@ -51,7 +54,13 @@
     <Content Include="images\converters.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\newTallWiz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\wizard2Tall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\wizardscreen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\wpfmostwanted.png">
@@ -65,6 +74,9 @@
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Themes\newTallWiz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="wpfmostwanted.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -80,7 +92,39 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Themes\wizard2Tall.png" />
+    <Resource Include="Themes\wizard2Tall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\ColorPickerStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\NumericUpDownStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\PropertyGridStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\RatingStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\TimePickerStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\ToggleSwitchStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\WatermarkTextboxStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Themes\WizardStyles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

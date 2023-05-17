@@ -1,8 +1,3 @@
-﻿Sure, here are the `README.md` files for your `WizardControl` and `WizardPage`:
-
-## WizardControl
-
-```markdown
 # WizardControl
 
 The `WizardControl` is a custom WPF control that presents a series of `WizardPage`s to assist the user in performing a task or series of tasks.

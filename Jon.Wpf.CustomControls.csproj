@@ -24,6 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\converters.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
     <None Remove="images\wizard2Tall.png" />
@@ -35,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="images\converters.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\wizard.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

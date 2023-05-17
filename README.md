@@ -2,7 +2,7 @@
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-![Banner](./images/banner.png) 
+![Banner](./Images/banner.png) 
 
 
 *New WizardControl*

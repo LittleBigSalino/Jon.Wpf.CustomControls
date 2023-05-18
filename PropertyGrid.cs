@@ -18,8 +18,7 @@ namespace Jon.Wpf.CustomControls
             set
             {
                 SetValue(SelectedObjectProperty, value);
-                SelectedObjectName = SelectedObject.GetType().ToString();
-                var properties = TypeDescriptor.GetProperties(SelectedObject);
+                SelectedObjectName = SelectedObject.GetType().ToString();                
                 UpdatePropertyEntries();
             }
         }

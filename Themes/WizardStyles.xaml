@@ -22,50 +22,78 @@
                                 <ColumnDefinition Width="120" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-
+                            <Border
+                                Grid.ColumnSpan="2"
+                                Padding="2"
+                                Background="DarkGray"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                                <TextBlock
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Text="{Binding Title}"
+                                    TextAlignment="Center" />
+                            </Border>
                             <Border
                                 Grid.Row="1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
-
-                                <StackPanel>
-                                    <TextBlock Margin="5" HorizontalAlignment="Right">
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}/{1}">
-                                                <Binding
-                                                    Converter="{StaticResource PlusOneConverter}"
-                                                    Path="CurrentPageNumber"
-                                                    RelativeSource="{RelativeSource AncestorType=local:WizardControl}" />
-                                                <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=local:WizardControl}" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
+                                <DockPanel Background="LightGray">
                                     <Image
                                         Width="120"
                                         Margin="1,2,1,2"
+                                        VerticalAlignment="Bottom"
+                                        DockPanel.Dock="Bottom"
                                         Source="/Jon.Wpf.CustomControls;component/Themes/newTallWiz.png"
                                         Stretch="Uniform"
                                         StretchDirection="Both" />
-                                </StackPanel>
+                                </DockPanel>
                             </Border>
-                            <ItemsPresenter Grid.Row="1" Grid.Column="1" />
-                            <StackPanel
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BorderBrush="Black"
+                                BorderThickness=".6">
+                                <ItemsPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <Grid
                                 Grid.Row="2"
                                 Grid.ColumnSpan="2"
-                                Margin="10"
-                                HorizontalAlignment="Center"
-                                Orientation="Horizontal">
+                                HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Grid.Column="3"
+                                    Margin="5"
+                                    HorizontalAlignment="Right">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}/{1}">
+                                            <Binding
+                                                Converter="{StaticResource PlusOneConverter}"
+                                                Path="CurrentPageNumber"
+                                                RelativeSource="{RelativeSource AncestorType=local:WizardControl}" />
+                                            <Binding Path="Items.Count" RelativeSource="{RelativeSource AncestorType=local:WizardControl}" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                                 <Button
+                                    Grid.Column="1"
                                     Width="75"
                                     Margin="5"
                                     Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BackCommand}"
                                     Content="Back" />
                                 <Button
+                                    Grid.Column="2"
                                     Width="75"
                                     Margin="5"
                                     Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NextCommand}"
                                     Content="Next" />
-                            </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
                 </ControlTemplate>

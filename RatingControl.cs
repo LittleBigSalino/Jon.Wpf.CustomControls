@@ -150,18 +150,18 @@ namespace Jon.Wpf.CustomControls
 
         private void MouseOverAction(object param)
         {
-            Path starOver = param as Path;
+            Path? starOver = param as Path;
 
         }
 
         private void MouseLeaveAction(object param)
         {
-            Path starOver = param as Path;
+            Path? starOver = param as Path;
         }
 
         private void ClickAction(object param)
         {
-            Path starOver = param as Path;
+            Path? starOver = param as Path;
             int starNumber = Int32.Parse(starOver.Tag as string);
             RatingValue = starNumber;
             foreach (var star in FindVisualChildren<Path>(this)) // Replace UIElement with the type of your stars

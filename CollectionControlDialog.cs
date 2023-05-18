@@ -17,31 +17,34 @@ using System.Windows.Shapes;
 
 namespace Jon.Wpf.CustomControls
 {
-    public class CollectionControlDialog : Window
+    public class CollectionControlDialog<T> : Window
     {
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(CollectionControlDialog), new FrameworkPropertyMetadata(null, OnItemsSourceChanged));
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable<T>), typeof(CollectionControlDialog<T>), new FrameworkPropertyMetadata(null, OnItemsSourceChanged));
 
         public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register("SelectedItem", typeof(object), typeof(CollectionControlDialog), new FrameworkPropertyMetadata(null));
+            DependencyProperty.Register("SelectedItem", typeof(T), typeof(CollectionControlDialog<T>), new FrameworkPropertyMetadata(null));
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        public IEnumerable ItemsSource
+        public IEnumerable<T> ItemsSource
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable<T>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-        public object SelectedItem
+        public T SelectedItem
         {
-            get { return GetValue(SelectedItemProperty); }
+            get { return (T)GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
 
-        public CollectionControlDialog()
+        public CollectionControlDialog(List<T> items)
         {
             // Set up the dialog window properties here
+            this.Title = "Collection Control Dialog";
+            this.Width = 500;
+            this.Height = 300;
 
             // Button to add a new item
             var addButton = new Button { Content = "Add" };
@@ -51,12 +54,28 @@ namespace Jon.Wpf.CustomControls
             var removeButton = new Button { Content = "Remove" };
             removeButton.Click += (s, e) => RemoveSelectedItem();
 
-            // TODO: Add your controls to the window
+            // Add your controls to the window
+            var stackPanel = new StackPanel();
+            stackPanel.Children.Add(addButton);
+            stackPanel.Children.Add(removeButton);
+
+            // Create a ListBox to display the items
+            var listBox = new ListBox
+            {
+                ItemsSource = items
+            };
+            stackPanel.Children.Add(listBox);
+
+            this.Content = stackPanel;
         }
 
         private void AddNewItem()
         {
-            // TODO: Add logic to create a new item and add it to the collection
+            // Add logic to create a new item and add it to the collection
+            if (ItemsSource is IList<T> list)
+            {
+                list.Add(default);
+            }
 
             // Raise the CollectionChanged event
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
@@ -64,7 +83,11 @@ namespace Jon.Wpf.CustomControls
 
         private void RemoveSelectedItem()
         {
-            // TODO: Add logic to remove the selected item from the collection
+            // Add logic to remove the selected item from the collection
+            if (ItemsSource is IList<T> list)
+            {
+                list.Remove(SelectedItem);
+            }
 
             // Raise the CollectionChanged event
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
@@ -72,9 +95,15 @@ namespace Jon.Wpf.CustomControls
 
         private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var control = d as CollectionControlDialog;
+            var control = d as CollectionControlDialog<T>;
 
-            // TODO: Add logic to handle when the ItemsSource property changes
+            // Add logic to handle when the ItemsSource property changes
+            if (e.NewValue is INotifyCollectionChanged newCollection)
+            {
+                newCollection.CollectionChanged += (s, e) => control.CollectionChanged?.Invoke(s, e);
+            }
         }
     }
+
+
 }

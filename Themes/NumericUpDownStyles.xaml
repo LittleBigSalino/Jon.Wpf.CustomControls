@@ -14,6 +14,7 @@
 
                         <TextBox
                             Grid.Column="0"
+                            Padding="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
                             Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
@@ -23,18 +24,34 @@
 
                             <Button
                                 x:Name="PART_DecreaseButton"
-                                Width="20"
-                                Height="20"
-                                Margin="2"
-                                Padding="2"
-                                Content="↓" />
+                                Margin="0,1,0,1"
+                                VerticalAlignment="Center">
+                                <Path
+                                    Width="12"
+                                    Height="12"
+                                    Margin="1"
+                                    VerticalAlignment="Center"
+                                    Data="M128 192l128 128 128-128z"
+                                    Fill="Black"
+                                    IsEnabled="True"
+                                    Stretch="Uniform"
+                                    Stroke="Black" />
+                            </Button>
                             <Button
                                 x:Name="PART_IncreaseButton"
-                                Width="20"
-                                Height="20"
-                                Margin="2"
-                                Padding="2"
-                                Content="↑" />
+                                Margin="0,1,0,1"
+                                VerticalAlignment="Center">
+                                <Path
+                                    Width="12"
+                                    Height="12"
+                                    Margin="1"
+                                    VerticalAlignment="Center"
+                                    Data="M128 320l128-128 128 128z"
+                                    Fill="Black"
+                                    IsEnabled="True"
+                                    Stretch="Uniform"
+                                    Stroke="Black" />
+                            </Button>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

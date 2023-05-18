@@ -2,18 +2,18 @@
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-![Banner](./banner.png) 
+![Banner](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/banner.png?raw=true) 
 
 
 *New WizardControl*
 
-![WizardScreen](./wizardscreen.png)
+![WizardScreen](wizardscreen.png)
 
 
 *Coming Soon* Terminal Control
 
 
-![TerminalControl](terminal.png)
+![TerminalControl](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/terminal.png?raw=true)
 
 ## Table of Contents
 
@@ -92,7 +92,7 @@ Converters are used in WPF to transform data from one type to another. They are 
 - `ColorToNameConverter`: Converts a `Color` to its name as a string, if it has one.
 - `PropertyNameConverter`: Converts a property name to a more user-friendly format.
 
-![Converters](./Images/converters.png)
+![Converters](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/converters.png?raw=true)
 
 Please note that the exact behavior of each converter may depend on its implementation and usage in the controls.
 

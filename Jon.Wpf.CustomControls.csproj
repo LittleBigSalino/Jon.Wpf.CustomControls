@@ -25,6 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\EvaIcons-ArrowCircleUp.png" />
+    <None Remove="images\Unicons-ArrowCircleDown.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
     <None Remove="LICENSE.txt" />
@@ -35,6 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="images\EvaIcons-ArrowCircleUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Unicons-ArrowCircleDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

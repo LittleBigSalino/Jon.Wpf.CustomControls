@@ -92,7 +92,7 @@ Converters are used in WPF to transform data from one type to another. They are 
 - `ColorToNameConverter`: Converts a `Color` to its name as a string, if it has one.
 - `PropertyNameConverter`: Converts a property name to a more user-friendly format.
 
-![Converters](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/converters.png?raw=true)
+![Converters](./Images/converters.png)
 
 Please note that the exact behavior of each converter may depend on its implementation and usage in the controls.
 

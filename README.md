@@ -6,7 +6,7 @@ Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. Thi
 
 ![TimePicker](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/TimePicker.png?raw=true)
 
-![ToggleSwitch](./Images/RatingControl.png) 
+![RatingControl](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/RatingControl.png?raw=true)) 
 
 ![ToggleSwitch](./Images/PropertyGrid.png) 
 

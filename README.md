@@ -2,7 +2,7 @@
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-![ToggleSwitch](/Images/ToggleSwitch.png) 
+![ToggleSwitch.png](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ToggleSwitch.png?raw=true)
 
 ![ToggleSwitch](./Images/TimePicker.png) 
 

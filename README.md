@@ -2,34 +2,15 @@
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-### ToggleSwitch
+![ToggleSwitch.png](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ToggleSwitch.png?raw=true)
 
+![TimePicker](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/TimePicker.png?raw=true)
 
-![ToggleSwitch](./Images/ToggleSwitch.png) 
+![RatingControl](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/RatingControl.png?raw=true)
 
-### WatermarkTextBox
+![PropertyGrid](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/PropertyGrid.png?raw=true)
 
-
-![WatermarkTextbox](./Images/WatermarkTextbox.png)
-
-### TimePicker
-
-![TimePicker](./Images/TimePicker.png) 
-
-
-### RatingControl
-
-
-![RatingControl](./Images/RatingControl.png) 
-
-
-### PropertyGrid
-
-![PropertyGrid](./Images/PropertyGrid.png) 
-
-### ColorPickers
-
-![ColorPickers](./Images/ColorPickers.png) 
+![ColorPickers](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ColorPickers.png?raw=true) 
 
 
 *Updated WizardControl*

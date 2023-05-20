@@ -188,7 +188,6 @@
 
                             <!--  Hexadecimal  -->
 
-
                             <TextBox
                                 Grid.Row="3"
                                 Margin="2"

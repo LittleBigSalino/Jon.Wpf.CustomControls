@@ -19,7 +19,7 @@
                             <TextBlock
                                 x:Name="PART_Watermark"
                                 Margin="3,1,0,0"
-                                Foreground="{TemplateBinding Foreground}"
+                                Foreground="{TemplateBinding WatermarkColor}"
                                 IsHitTestVisible="False"
                                 Opacity="{TemplateBinding WatermarkOpacity}"
                                 Text="{TemplateBinding WatermarkText}"
@@ -35,8 +35,6 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-
-
 
             </Setter.Value>
         </Setter>

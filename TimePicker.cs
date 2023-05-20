@@ -71,7 +71,7 @@ namespace Jon.Wpf.CustomControls
         static TimePicker()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TimePicker), new FrameworkPropertyMetadata(typeof(TimePicker)));
-            
+
         }
 
         public TimePicker()
@@ -181,6 +181,23 @@ namespace Jon.Wpf.CustomControls
             return Is24HourFormat ? "HH:mm" : "h:mm tt";
         }
 
+        private void PopulateHourSelector(ComboBox hourSelector)
+        {
+            int startHour = Is24HourFormat ? 0 : 1;
+            int endHour = Is24HourFormat ? 23 : 12;
+
+            for (int i = startHour; i <= endHour; i++)
+            {
+                hourSelector.Items.Add(i);
+            }
+        }
+        private void PopulateMinuteSelector(ComboBox minuteSelector)
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                minuteSelector.Items.Add(i.ToString("D2"));
+            }
+        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -223,27 +240,5 @@ namespace Jon.Wpf.CustomControls
                 };
             }
         }
-
-
-        private void PopulateHourSelector(ComboBox hourSelector)
-        {
-            int startHour = Is24HourFormat ? 0 : 1;
-            int endHour = Is24HourFormat ? 23 : 12;
-
-            for (int i = startHour; i <= endHour; i++)
-            {
-                hourSelector.Items.Add(i);
-            }
-        }
-
-        private void PopulateMinuteSelector(ComboBox minuteSelector)
-        {
-            for (int i = 0; i < 60; i++)
-            {
-                minuteSelector.Items.Add(i.ToString("D2"));
-            }
-        }
     }
 }
-
-    

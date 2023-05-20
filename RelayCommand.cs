@@ -30,6 +30,11 @@ namespace Jon.Wpf.CustomControls
 
     public class RelayCommand<T> : ICommand
     {
+        public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
+        {
+            this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            this.canExecute = canExecute;
+        }
         private readonly Action<T> execute;
         private readonly Func<T, bool> canExecute;
 
@@ -38,13 +43,6 @@ namespace Jon.Wpf.CustomControls
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-
-        public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
-        {
-            this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            this.canExecute = canExecute;
-        }
-
         public bool CanExecute(object parameter)
         {
             if (parameter is T typedParameter && (canExecute == null || canExecute(typedParameter)))

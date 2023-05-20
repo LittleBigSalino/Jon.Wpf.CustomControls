@@ -38,7 +38,6 @@ namespace Jon.Wpf.CustomControls
             set { SetValue(ColorSquareWidthProperty, value); }
         }
 
-
         public Double ColorSquareHeight
         {
             get { return (Double)GetValue(ColorSquareHeightProperty); }
@@ -50,7 +49,6 @@ namespace Jon.Wpf.CustomControls
             get { return (int)GetValue(ColorSquareColumnCountProperty); }
             set { SetValue(ColorSquareColumnCountProperty, value); }
         }
-
 
         public ICommand SelectColorCommand { get; }
         public ColorPaletteControl()
@@ -71,7 +69,6 @@ namespace Jon.Wpf.CustomControls
 
         public static readonly DependencyProperty ColorSquareHeightProperty =
            DependencyProperty.Register("ColorSquareHeight", typeof(double), typeof(ColorPaletteControl), new PropertyMetadata(16.0));
-
 
         public static readonly DependencyProperty ColorSquareColumnCountProperty =
            DependencyProperty.Register("ColorSquareColumnCount", typeof(int), typeof(ColorPaletteControl), new PropertyMetadata(15));

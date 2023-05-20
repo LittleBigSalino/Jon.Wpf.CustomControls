@@ -22,7 +22,6 @@
 
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
 
-
                                 <Button
                                     x:Name="PART_DecreaseButton"
                                     Margin="0,0,0,0"

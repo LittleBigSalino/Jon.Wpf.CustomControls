@@ -18,7 +18,7 @@ namespace Jon.Wpf.CustomControls
             set
             {
                 SetValue(SelectedObjectProperty, value);
-                SelectedObjectName = SelectedObject.GetType().ToString();                
+                SelectedObjectName = SelectedObject.GetType().ToString();
                 UpdatePropertyEntries();
             }
         }
@@ -28,8 +28,6 @@ namespace Jon.Wpf.CustomControls
             get { return (PropertyEntry)GetValue(SelectedEntryProperty); }
             set { SetValue(SelectedEntryProperty, value); }
         }
-
-
 
         public ICommand SelectionChangedCommand
         {
@@ -174,15 +172,14 @@ namespace Jon.Wpf.CustomControls
             OnPropertyChanged(nameof(CategorizedView));
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private void OnSelectionChanged(PropertyEntry selectedEntry)
         {
             SelectedEntry = selectedEntry;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedEntry)));
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

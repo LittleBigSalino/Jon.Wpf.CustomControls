@@ -15,7 +15,7 @@ Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. Thi
 
 *Updated WizardControl*
 
-![WizardScreen](wizardscreen.png)
+![WizardScreen](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/wizardscreen.png?raw=true)
 
 
 *Coming Soon* Terminal Control

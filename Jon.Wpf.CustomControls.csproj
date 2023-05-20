@@ -11,17 +11,17 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Controls Converters Wizard NumericUpDown ColorPicker ToggleSwitch</PackageTags>
+    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Controls Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.61</AssemblyVersion>
-    <FileVersion>1.61</FileVersion>
+    <AssemblyVersion>1.70</AssemblyVersion>
+    <FileVersion>1.70</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.61</Version>
+    <Version>1.70</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Seperated theme logic for default styles.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated Wizard with som reorganization of the default style. Terminal control is so far working fairly well. Updated NumericUpDown to clean up the look and feel and push through some of the template property for border, etc.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +30,6 @@
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
     <None Remove="LICENSE.txt" />
-    <None Remove="README.md" />
     <None Remove="Themes\newTallWiz.png" />
     <None Remove="Themes\wizard2Tall.png" />
     <None Remove="wpfmostwanted.png" />
@@ -72,6 +71,13 @@
     <Resource Include="Themes\wizard2Tall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

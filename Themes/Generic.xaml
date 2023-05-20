@@ -97,43 +97,7 @@
     </Style>
 
 
-    <!--<Style TargetType="{x:Type local:CollectionControlDialog}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CollectionControlDialog}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
 
-                            <ListBox
-                                Grid.Row="0"
-                                ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
-                                SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
-
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <Button
-                                    Width="75"
-                                    Margin="5"
-                                    Command="{Binding AddCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Content="Add" />
-                                <Button
-                                    Width="75"
-                                    Margin="5"
-                                    Command="{Binding RemoveCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Content="Remove" />
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
 
     <Style TargetType="{x:Type local:TerminalControl}">
         <Setter Property="Template">
@@ -143,47 +107,52 @@
                         Background="Black"
                         BorderBrush="Gray"
                         BorderThickness="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                                <TextBlock
-                                    Padding="10"
-                                    FontFamily="Consolas"
-                                    Foreground="LimeGreen"
-                                    Text="{TemplateBinding OutputText}" />
-                            </ScrollViewer>
-                            <Border
-                                Grid.Row="1"
-                                Padding="10"
-                                Background="Black">
-                                <TextBox
+                        <ScrollViewer>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ScrollViewer
+                                    Grid.Row="0"
+                                    MaxHeight="400"
+                                    VerticalScrollBarVisibility="Auto">
+                                    <TextBlock
+                                        Padding="10"
+                                        FontFamily="Consolas"
+                                        Foreground="LimeGreen"
+                                        Text="{TemplateBinding OutputText}" />
+                                </ScrollViewer>
+                                <Border
                                     Grid.Row="1"
-                                    local:TextBoxEnterCommandBehavior.EnterCommand="{Binding ExecuteCommandCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}"
-                                    Background="Black"
-                                    BorderThickness="0"
-                                    CaretBrush="LimeGreen"
-                                    FontFamily="Consolas"
-                                    Foreground="LimeGreen"
-                                    Text="{Binding InputText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                    <TextBox.Template>
-                                        <ControlTemplate TargetType="TextBox">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock
-                                                    Background="Black"
-                                                    FontFamily="Consolas"
-                                                    Foreground="LimeGreen"
-                                                    Text="{Binding CurrentDirectory, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}" />
-                                                <ScrollViewer x:Name="PART_ContentHost" />
-                                            </StackPanel>
-                                        </ControlTemplate>
-                                    </TextBox.Template>
-                                </TextBox>
+                                    Padding="10"
+                                    Background="Black">
+                                    <TextBox
+                                        Grid.Row="1"
+                                        local:TextBoxEnterCommandBehavior.EnterCommand="{Binding ExecuteCommandCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}"
+                                        Background="Black"
+                                        BorderThickness="1"
+                                        CaretBrush="LimeGreen"
+                                        FontFamily="Consolas"
+                                        Foreground="LimeGreen"
+                                        Text="{Binding InputText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <TextBox.Template>
+                                            <ControlTemplate TargetType="TextBox">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock
+                                                        Background="Black"
+                                                        FontFamily="Consolas"
+                                                        Foreground="LimeGreen"
+                                                        Text="{Binding CurrentDirectory, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}" />
+                                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </TextBox.Template>
+                                    </TextBox>
 
-                            </Border>
-                        </Grid>
+                                </Border>
+                            </Grid>
+                        </ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

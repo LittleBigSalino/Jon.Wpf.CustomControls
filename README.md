@@ -2,26 +2,28 @@
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-![ToggleSwitch.png](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ToggleSwitch.png?raw=true)
+![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
 
-![TimePicker](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/TimePicker.png?raw=true)
+![NumericUpDown](https://i.imgur.com/jcoydz5.png)
 
-![RatingControl](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/RatingControl.png?raw=true)
+![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
 
-![PropertyGrid](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/PropertyGrid.png?raw=true)
+![TimePicker](https://i.imgur.com/TDHHsJs.png)
 
-![ColorPickers](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ColorPickers.png?raw=true) 
+![RatingControl](https://i.imgur.com/HcAQvb8.png)
+
+![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
+
+![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
 
 
 *Updated WizardControl*
 
-![WizardScreen](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/wizardscreen.png?raw=true)
-
+![WizardControl](https://i.imgur.com/S2xEUAe.png)
 
 *Coming Soon* Terminal Control
 
 
-![TerminalControl](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/terminal.png?raw=true)
 
 ## Table of Contents
 
@@ -100,7 +102,6 @@ Converters are used in WPF to transform data from one type to another. They are 
 - `ColorToNameConverter`: Converts a `Color` to its name as a string, if it has one.
 - `PropertyNameConverter`: Converts a property name to a more user-friendly format.
 
-![Converters](./Images/converters.png  )
 
 Please note that the exact behavior of each converter may depend on its implementation and usage in the controls.
 

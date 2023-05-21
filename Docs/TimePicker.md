@@ -1,5 +1,8 @@
 ﻿# TimePicker.md
 
+![TimePicker](https://i.imgur.com/TDHHsJs.png)
+
+
 ## Description
 
 The `TimePicker` control is a custom component for .NET's WPF library. It fills in the gap left by the native WPF controls by providing a customizable and robust time selection feature. It supports both 24-hour and 12-hour formats, and exposes properties to set minimum and maximum time constraints.
@@ -63,6 +66,44 @@ The `TimePicker` control uses the following parts:
 - `PART_HourSelector`: A `ComboBox` that displays the selectable hours.
 - `PART_MinuteSelector`: A `ComboBox` that displays the selectable minutes.
 - `AmPmSelector`: A `ComboBox` that displays the selectable AM/PM options (only applicable for the 12-hour format).
+
+You can also customize the control using the Style property:
+
+```xml
+Copy code
+<local:TimePicker>
+    <local:TimePicker.Style>
+        <!-- Your custom style here -->
+    </local:TimePicker.Style>
+</local:TimePicker>
+```
+
+## Customization
+You can customize the TimePicker control by overriding its default style in your XAML. The control provides several parts that you can customize:
+
+- PART_HourSelector: This part represents the hour selector of the TimePicker. You can style this part to change the appearance of the hour selector.
+- PART_MinuteSelector: This part represents the minute selector of the TimePicker. You can style this part to change the appearance of the minute selector.
+- AmPmSelector: This part represents the AM/PM selector of the TimePicker. You can style this part to change the appearance of the AM/PM selector.
+
+
+For example, to change the background color of the hour selector, you can do the following:
+
+```xml
+
+<Style TargetType="{x:Type local:TimePicker}">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type local:TimePicker}">
+                <!-- Your custom template here -->
+                <ComboBox x:Name="PART_HourSelector" Background="Red" />
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+```
+Please note that when customizing the control, you should keep the part names as they are (PART_HourSelector, PART_MinuteSelector, AmPmSelector), because the control uses these part names in its code-behind to apply functionality.
+
+
 
 ## Events
 

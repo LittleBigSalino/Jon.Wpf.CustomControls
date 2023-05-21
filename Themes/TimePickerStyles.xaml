@@ -6,7 +6,7 @@
     <converters:DateTimeToAmPmConverter x:Key="DateTimeToAmPmConverter" />
     <converters:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
     <converters:SelectorValuesToDateTimeConverter x:Key="SelectorValuesToDateTimeConverter" />
-    <Style TargetType="{x:Type local:TimePicker}">
+    <!--<Style TargetType="{x:Type local:TimePicker}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TimePicker}">
@@ -74,6 +74,68 @@
                     </Border>
                 </ControlTemplate>
 
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    <Style TargetType="{x:Type local:TimePicker}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TimePicker}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox
+                                    x:Name="PART_HourSelector"
+                                    Width="50"
+                                    Padding="{TemplateBinding Padding}"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SelectedValue="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedHour}" />
+                                <TextBlock
+                                    Margin="1,0,1,0"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text=":" />
+                                <ComboBox
+                                    x:Name="PART_MinuteSelector"
+                                    Width="50"
+                                    Padding="{TemplateBinding Padding}"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SelectedValue="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedMinute}" />
+                                <ComboBox
+                                    x:Name="AmPmSelector"
+                                    Width="50"
+                                    Margin="2"
+                                    Padding="{TemplateBinding Padding}"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SelectedIndex="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedAmPm, Mode=TwoWay}"
+                                    Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimePicker}}, Path=Is24HourFormat, Converter={StaticResource BoolToCollapsedConverter}, ConverterParameter=collapsed}">
+                                    <ComboBoxItem Content="AM" />
+                                    <ComboBoxItem Content="PM" />
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>

@@ -7,35 +7,30 @@ namespace Jon.Wpf.CustomControls
 {
     public class ToggleSwitch : ToggleButton
     {
-        static ToggleSwitch()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleSwitch), new FrameworkPropertyMetadata(typeof(ToggleSwitch)));
-        }
-
         public string OffText
         {
             get => (string)GetValue(OffTextProperty);
             set => SetValue(OffTextProperty, ValidateText(value, nameof(OffText)));
         }
-
         public string OnText
         {
             get => (string)GetValue(OnTextProperty);
             set => SetValue(OnTextProperty, ValidateText(value, nameof(OnText)));
         }
-
         public Brush OffForeground
         {
             get => (Brush)GetValue(OffForegroundProperty);
             set => SetValue(OffForegroundProperty, ValidateBrush(value, nameof(OffForeground)));
         }
-
         public Brush OnForeground
         {
             get => (Brush)GetValue(OnForegroundProperty);
             set => SetValue(OnForegroundProperty, ValidateBrush(value, nameof(OnForeground)));
         }
-
+        static ToggleSwitch()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleSwitch), new FrameworkPropertyMetadata(typeof(ToggleSwitch)));
+        }
         public static readonly DependencyProperty OffTextProperty =
             RegisterProperty("OffText", typeof(string), "Off");
 
@@ -73,6 +68,5 @@ namespace Jon.Wpf.CustomControls
             return value;
         }
     }
-
 
 }

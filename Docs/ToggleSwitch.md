@@ -1,5 +1,7 @@
 ﻿# ToggleSwitch.md
 
+![ToggleSwitch](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/ToggleSwitch.png?raw=true)
+
 ## Overview
 
 The `ToggleSwitch` is a custom control that extends the `ToggleButton` in the WPF framework. This control provides a user-friendly way to switch an option on or off. It visually represents the binary state of the bound value, with customizable text and color for both states.

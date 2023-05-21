@@ -1,10 +1,10 @@
 ﻿
-
----
-
 # WatermarkTextBox Control for WPF .NET v7.0
 
 A custom TextBox control for WPF .NET v7.0 with built-in watermark support. The watermark is a faint hint displayed in the TextBox that describes what is expected to be entered in the TextBox. It disappears when text is typed into the TextBox.
+
+
+![WatermarkTextBox](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/blob/master/images/watermarkTextbox.png?raw=true)
 
 ## Features
 
@@ -20,6 +20,17 @@ A custom TextBox control for WPF .NET v7.0 with built-in watermark support. The 
 - A WPF application project
 
 ### Installation
+
+The easiest way to use the `WatermarkTextBox` control in your project is to install the `Jon.Wpf.CustomControls` NuGet package.
+
+- From the Visual Studio Package Manager Console, enter the following command:
+    ```
+    Install-Package Jon.Wpf.CustomControls
+    ```
+
+- Alternatively, you can search for `Jon.Wpf.CustomControls` in the NuGet Package Manager UI.
+
+If you prefer to build from source:
 
 1. Clone this repository:
     ```
@@ -42,6 +53,12 @@ A custom TextBox control for WPF .NET v7.0 with built-in watermark support. The 
     <local:WatermarkTextBox WatermarkText="Enter text here" WatermarkOpacity="0.5" Width="200" Height="30" />
     ```
 
+The WatermarkTextBox has three properties:
+
+- `WatermarkText`: The placeholder text that is displayed when the TextBox is empty and not focused.
+- `WatermarkColor`: The color of the placeholder text.
+- `WatermarkOpacity`: The opacity of the placeholder text, from 0 (completely transparent) to 1 (completely opaque).
+
 ## Customization
 
 - You can set the opacity of the watermark using the `WatermarkOpacity` property:
@@ -53,6 +70,8 @@ A custom TextBox control for WPF .NET v7.0 with built-in watermark support. The 
     ```xaml
     <local:WatermarkTextBox WatermarkText="Enter text here" WatermarkOpacity="0.5" Width="200" Height="30" BorderBrush="Black" Background="White"/>
     ```
+
+When you run your application, you should see a TextBox with the specified placeholder text. When you click on the TextBox, the placeholder text disappears, and you can enter your own text. If you delete your text, the placeholder text reappears.
 
 ## Building
 
@@ -72,4 +91,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-Please replace `your-github-username` and `your-repo-name` with your actual GitHub username and repository name in the `Installation` section. Adjust any other sections as necessary for your specific project.
+Please replace `your-github-username` and `your-repo-name` with your actual GitHub username and repository name in the `Installation` section (if you're using the git method). Adjust any other sections as necessary for your specific project.

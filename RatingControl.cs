@@ -68,6 +68,7 @@ namespace Jon.Wpf.CustomControls
             Loaded += RatingControl_Loaded;
         }
 
+
         public static readonly DependencyProperty UnselectedBrushProperty =
             DependencyProperty.Register("UnselectedBrush", typeof(Brush), typeof(RatingControl), new PropertyMetadata(Brushes.Gray));
         public static readonly DependencyProperty SelectedBrushProperty =
@@ -96,26 +97,24 @@ namespace Jon.Wpf.CustomControls
         }
         private static void OnRatingValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            RatingControl ratingControl = (RatingControl)d;
-            ratingControl.UpdateStars();
-            ratingControl.RaiseRatingValueChangedEvent();
+            if (d is RatingControl ratingControl)
+            {
+                ratingControl.UpdateStars();
+                ratingControl.RaiseRatingValueChangedEvent();
+            }
         }
         private void RatingControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateStars();
         }
+
         private void UpdateStars()
         {
-            foreach (var star in FindVisualChildren<Path>(this)) // Replace UIElement with the type of your stars
+            foreach (var star in FindVisualChildren<Path>(this))
             {
-                int thisStarNumber = Int32.Parse(star.Tag as string);
-                if (thisStarNumber <= RatingValue)
+                if (star.Tag is string tag && Int32.TryParse(tag, out int thisStarNumber))
                 {
-                    star.Fill = SelectedBrush;
-                }
-                else
-                {
-                    star.Fill = UnselectedBrush;
+                    star.Fill = thisStarNumber <= RatingValue ? SelectedBrush : UnselectedBrush;
                 }
             }
         }

@@ -13,15 +13,15 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Controls Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.78</AssemblyVersion>
-    <FileVersion>1.78</FileVersion>
+    <AssemblyVersion>1.79</AssemblyVersion>
+    <FileVersion>1.79</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.78</Version>
+    <Version>1.79</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Lots of bug fixes for TimePicker. Documenation update for TimePicker as well.
+    <PackageReleaseNotes>Updates to the Rating control and documentation. More customization examples
 </PackageReleaseNotes>
   </PropertyGroup>
 

@@ -110,12 +110,18 @@ namespace Jon.Wpf.CustomControls
 
         private void UpdateStars()
         {
+            int i = 1;
             foreach (var star in FindVisualChildren<Path>(this))
             {
-                if (star.Tag is string tag && Int32.TryParse(tag, out int thisStarNumber))
+                if(i <= RatingValue)
                 {
-                    star.Fill = thisStarNumber <= RatingValue ? SelectedBrush : UnselectedBrush;
+                    star.Fill = SelectedBrush;
                 }
+                else
+                {
+                    star.Fill = UnselectedBrush;
+                }
+                i++;
             }
         }
 

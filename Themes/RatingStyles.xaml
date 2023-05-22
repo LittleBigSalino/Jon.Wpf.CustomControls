@@ -357,10 +357,9 @@
                     <Grid>
                         <Viewbox>
                             <StackPanel Orientation="Horizontal">
-
                                 <Path
                                     x:Name="Star1"
-                                    Style="{StaticResource RatingStarStyle}"
+                                    Data="{Binding StarSymbol, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}"
                                     Tag="1">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="MouseEnter">
@@ -373,7 +372,7 @@
                                 </Path>
                                 <Path
                                     x:Name="Star2"
-                                    Style="{StaticResource RatingStarStyle}"
+                                    Data="{Binding StarSymbol, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}"
                                     Tag="2">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="MouseEnter">
@@ -386,7 +385,7 @@
                                 </Path>
                                 <Path
                                     x:Name="Star3"
-                                    Style="{StaticResource RatingStarStyle}"
+                                    Data="{Binding StarSymbol, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}"
                                     Tag="3">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="MouseEnter">
@@ -399,7 +398,7 @@
                                 </Path>
                                 <Path
                                     x:Name="Star4"
-                                    Style="{StaticResource RatingStarStyle}"
+                                    Data="{Binding StarSymbol, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}"
                                     Tag="4">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="MouseEnter">
@@ -412,7 +411,7 @@
                                 </Path>
                                 <Path
                                     x:Name="Star5"
-                                    Style="{StaticResource RatingStarStyle}"
+                                    Data="{Binding StarSymbol, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RatingControl}}}"
                                     Tag="5">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="MouseEnter">

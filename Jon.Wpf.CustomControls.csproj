@@ -23,16 +23,16 @@
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
     <PackageReleaseNotes>Fixed TimePicker event now firing. Updated docuementation as well.</PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
-    <None Remove="Dice.obj" />
+    <None Include="gettingStarted.md" pack="true" PackagePath="." />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="gettingStarted.md" />
     <None Remove="images\EvaIcons-ArrowCircleUp.png" />
     <None Remove="images\Unicons-ArrowCircleDown.png" />
     <None Remove="images\wizard.png" />
     <None Remove="images\wizard2.png" />
     <None Remove="LICENSE.txt" />
-    <None Remove="singledice.obj" />
     <None Remove="Themes\newTallWiz.png" />
     <None Remove="Themes\wizard2Tall.png" />
   </ItemGroup>
@@ -43,9 +43,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dice.obj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="images\EvaIcons-ArrowCircleUp.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -58,9 +55,6 @@
     <Content Include="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="singledice.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Themes\newTallWiz.png">

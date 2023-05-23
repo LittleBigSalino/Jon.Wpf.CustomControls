@@ -88,6 +88,48 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style
+        x:Key="ToggleSwitchAltColorCirHandle"
+        BasedOn="{StaticResource {x:Type ToggleButton}}"
+        TargetType="{x:Type local:ToggleSwitch}">
+        <Setter Property="Background" Value="LightBlue" />
+        <Setter Property="Foreground" Value="DarkBlue" />
+        <Setter Property="BorderBrush" Value="Blue" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ToggleSwitch}">
+                    <Border
+                        MinWidth="60"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid x:Name="PART_RootGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                x:Name="PART_OffText"
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding OffText, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Grid x:Name="PART_HandleGrid" Grid.Column="1">
+
+                                <Ellipse
+                                    x:Name="PART_Handle"
+                                    Width="15"
+                                    Height="15"
+                                    Fill="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <!--  Custom Style Option 1  -->
     <Style x:Key="ElegantStyleToggleSwitch" TargetType="{x:Type local:ToggleSwitch}">

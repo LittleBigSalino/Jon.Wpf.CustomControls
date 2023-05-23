@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -20,8 +21,12 @@ namespace Jon.Wpf.CustomControls
                 SetValue(SelectedObjectProperty, value);
                 SelectedObjectName = SelectedObject.GetType().ToString();
                 UpdatePropertyEntries();
+                SelectedObjectChanged?.Invoke(this, EventArgs.Empty); // Raise the event
             }
         }
+
+        public event EventHandler SelectedObjectChanged;
+
 
         public PropertyEntry SelectedEntry
         {

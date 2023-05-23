@@ -129,8 +129,8 @@ namespace Jon.Wpf.CustomControls
 
     public class NumericUpDown : Control
     {
-        private Button _increaseButton;
-        private Button _decreaseButton;
+        private Button? _increaseButton;
+        private Button? _decreaseButton;
 
         static NumericUpDown()
         {

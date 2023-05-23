@@ -3,6 +3,10 @@
 
 The `PropertyGrid` is a WPF control that allows users to view and edit properties of a selected object. The properties can be displayed in a categorized view or a sorted list.
 
+
+![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
+
+
 ## Features
 
 - View and edit properties of a selected object
@@ -26,6 +30,8 @@ Then, you can add a `PropertyGrid` control to your XAML:
 
 In this example, `YourObject` is a property in your view model that the `PropertyGrid` will display. You'll need to replace `YourObject` with the actual property you want to display in the `PropertyGrid`.
 
+
+
 ## Properties
 
 - `SelectedObject`: The object that the `PropertyGrid` is displaying the properties of.
@@ -35,8 +41,53 @@ In this example, `YourObject` is a property in your view model that the `Propert
 
 ## Events
 
-- `PropertyChanged`: Raised when a property of the `SelectedObject` is changed.
+- `PropertyChanged`: Raised when a property of the `PropertyGrid` is changed.
+- `SelectedObjectChanged`: Raised when the `SelectedObject` in the `PropertyGrid` changes. This event can be used to react to changes in the `SelectedObject` property.
 
+
+
+#### `SelectedObjectChanged` Event
+
+The `SelectedObjectChanged` event is raised whenever the `SelectedObject` property of the `PropertyGrid` changes. This allows you to execute custom logic whenever the user selects a different object in the property grid.
+
+Here's an example of how to subscribe to the `SelectedObjectChanged` event:
+
+```csharp
+PropertyGrid propertyGrid = new PropertyGrid();
+
+// Subscribe to the SelectedObjectChanged event
+propertyGrid.SelectedObjectChanged += (sender, args) =>
+{
+    // Code to execute when the SelectedObject changes
+    Console.WriteLine("Selected object has been changed!");
+};
+```
+
+In this example, whenever the `SelectedObject` changes, "Selected object has been changed!" will be printed to the console. You can replace the `Console.WriteLine` call with your own logic to execute whenever the `SelectedObject` changes.
+
+
+Sure, let's provide a similar documentation snippet for the `PropertyChanged` event as well. Here's how you might explain its usage:
+
+#### `PropertyChanged` Event
+
+The `PropertyChanged` event is raised whenever a property of the `PropertyGrid` changes. This includes not only `SelectedObject`, but also any other properties defined in the `PropertyGrid` class such as `CategorizedView`, `CategoryBackground`, `CategoryForeground`, etc. 
+
+Subscribing to the `PropertyChanged` event can be useful when you need to execute some logic in response to these changes. 
+
+Here's an example of how to subscribe to the `PropertyChanged` event:
+
+```csharp
+PropertyGrid propertyGrid = new PropertyGrid();
+
+// Subscribe to the PropertyChanged event
+propertyGrid.PropertyChanged += (sender, args) =>
+{
+    // Code to execute when a property changes
+    Console.WriteLine($"Property {args.PropertyName} has been changed!");
+};
+```
+
+In this example, whenever a property of the `PropertyGrid` changes, a message stating which property has changed will be printed to the console. You can replace the `Console.WriteLine` call with your own logic to execute whenever a property changes.
 ## Styles
 
 The `PropertyGrid` can be styled through the WPF styling system. For example, you can change the background color of the category headers by setting the `CategoryBackground` property. The default style for the `PropertyGrid` can be found in `YourProjectName/Themes/Generic.xaml`.

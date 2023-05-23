@@ -1,10 +1,9 @@
+
 # Jon.WPF.CustomControls
 
 Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
-
-# Help me make this a comprehensive set of useful controls. Contributions are welcome. Submit suggestions and please submit issues if you find them and I'll fix them.
-
+### *Help me make this a comprehensive set of useful controls. Contributions are welcome. Submit suggestions and please submit issues if you find them and I'll fix them*.
 
 ## Table of Contents
 
@@ -22,10 +21,13 @@ Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is b
 
 ## Getting Started
 
-1. Clone the repo: `git clone https://github.com/yourusername/Jon.WPF.CustomControls.git`
-2. Open the solution in Visual Studio 2023 or later.
-3. Build the solution to ensure everything is set up correctly.
-4. Start using the controls in your projects!
+1. Open Visual Studio 2023 or later.
+2. Open your solution in Visual Studio.
+3. Open the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console).
+4. Type `Install-Package Jon.Wpf.CustomControls` and press Enter to download and install the Jon.WPF.CustomControls NuGet package.
+5. Build your solution to ensure everything is set up correctly.
+6. Start using the controls in your projects!
+
 
 ## Usage
 
@@ -43,7 +45,7 @@ You can then use the controls like any other WPF control:
 
 ![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
 
-![NumericUpDown](https://i.imgur.com/2Io00Tc.png)
+![NumericUpDown](https://i.imgur.com/m0Ey5nG.png?1)
 
 ![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
 

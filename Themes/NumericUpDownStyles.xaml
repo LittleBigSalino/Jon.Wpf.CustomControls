@@ -25,14 +25,14 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 ToolTip="Decrease value">
-                                <Viewbox>
-                                    <Path
-                                        Data="M128 192l128 128 128-128z"
-                                        Fill="{TemplateBinding Foreground}"
-                                        IsEnabled="True"
-                                        Stretch="Uniform"
-                                        Stroke="{TemplateBinding BorderBrush}" />
-                                </Viewbox>
+
+                                <Path
+                                    Data="M128 192l128 128 128-128z"
+                                    Fill="{TemplateBinding Foreground}"
+                                    IsEnabled="True"
+                                    Stretch="Uniform"
+                                    Stroke="{TemplateBinding BorderBrush}" />
+
                             </Button>
 
 
@@ -56,14 +56,12 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 ToolTip="Increase value">
-                                <Viewbox>
-                                    <Path
-                                        Data="M128 320l128-128 128 128z"
-                                        Fill="{TemplateBinding Foreground}"
-                                        IsEnabled="True"
-                                        Stretch="Uniform"
-                                        Stroke="{TemplateBinding BorderBrush}" />
-                                </Viewbox>
+                                <Path
+                                    Data="M128 320l128-128 128 128z"
+                                    Fill="{TemplateBinding Foreground}"
+                                    IsEnabled="True"
+                                    Stretch="Uniform"
+                                    Stroke="{TemplateBinding BorderBrush}" />
                             </Button>
 
                         </Grid>

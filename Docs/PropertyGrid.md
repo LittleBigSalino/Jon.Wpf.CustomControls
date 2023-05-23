@@ -4,7 +4,7 @@
 The `PropertyGrid` is a WPF control that allows users to view and edit properties of a selected object. The properties can be displayed in a categorized view or a sorted list.
 
 
-![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
+Propert![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
 
 
 ## Features

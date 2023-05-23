@@ -2,6 +2,10 @@
 
 `NumericUpDown` is a custom control for WPF applications. It's a part of our custom control library and is designed to mimic the behavior of the `NumericUpDown` control found in Windows Forms.
 
+
+![NumericUpDown](https://i.imgur.com/2Io00Tc.png)
+
+
 ## Features
 
 - Increase or decrease a numeric value with up and down buttons.
@@ -28,6 +32,36 @@ Then use the control in your XAML:
 - `Minimum` (int): The minimum value for the control.
 - `Maximum` (int): The maximum value for the control.
 - `Value` (int): The current value of the control.
+
+## Basic Styling
+
+
+The below samples produce the numeric up down controls from the screenshot above.
+
+```xml
+  <StackPanel>
+                                <customcontrols:NumericUpDown Margin="10" BorderThickness=".5" />
+                                <customcontrols:NumericUpDown
+                                    Margin="10"
+                                    BorderBrush="Black"
+                                    BorderThickness=".5" />
+                                <customcontrols:NumericUpDown
+                                    Margin="10"
+                                    Background="Green"
+                                    BorderBrush="Blue"
+                                    BorderThickness=".5"
+                                    Foreground="Yellow" />
+                                <customcontrols:NumericUpDown
+                                    Margin="10"
+                                    BorderBrush="Blue"
+                                    BorderThickness=".5"
+                                    Foreground="Red" />
+                                <customcontrols:NumericUpDown
+                                    Margin="10"
+                                    Background="LightGray"
+                                    BorderThickness=".5" />
+                            </StackPanel>
+```
 
 ## Events
 

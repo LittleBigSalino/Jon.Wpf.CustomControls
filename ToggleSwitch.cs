@@ -27,10 +27,12 @@ namespace Jon.Wpf.CustomControls
             get => (Brush)GetValue(OnForegroundProperty);
             set => SetValue(OnForegroundProperty, ValidateBrush(value, nameof(OnForeground)));
         }
+
         static ToggleSwitch()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleSwitch), new FrameworkPropertyMetadata(typeof(ToggleSwitch)));
         }
+
         public static readonly DependencyProperty OffTextProperty =
             RegisterProperty("OffText", typeof(string), "Off");
 
@@ -67,6 +69,26 @@ namespace Jon.Wpf.CustomControls
 
             return value;
         }
+
+        // Define the ToggleChanged event and event data
+        public static readonly RoutedEvent ToggleChangedEvent = EventManager.RegisterRoutedEvent(
+            "ToggleChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ToggleSwitch));
+
+        // Expose the ToggleChanged event
+        public event RoutedEventHandler ToggleChanged
+        {
+            add { AddHandler(ToggleChangedEvent, value); }
+            remove { RemoveHandler(ToggleChangedEvent, value); }
+        }
+
+        // Raise the ToggleChanged event
+        protected override void OnToggle()
+        {
+            base.OnToggle();
+            RoutedEventArgs toggleArgs = new RoutedEventArgs(ToggleSwitch.ToggleChangedEvent);
+            RaiseEvent(toggleArgs);
+        }
     }
+
 
 }

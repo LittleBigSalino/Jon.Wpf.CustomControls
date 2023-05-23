@@ -57,6 +57,13 @@ The control defines two visual state groups:
 - `CommonStates`: This includes the `Normal`, `MouseOver`, `Pressed`, and `Disabled` states, which are common to all button-based controls.
 - `CheckStates`: This includes the `Checked`, `Unchecked`, and `Indeterminate` states. The `Checked` and `Unchecked` states animate the handle's position to visually represent the switch's state.
 
+
+## Events
+
+The `ToggleSwitch` control exposes the following event:
+
+- `ToggleChanged`: An event that is raised when the state of the toggle switch changes. This event can be subscribed to in code.
+
 ## Styling and Theming
 
 The `ToggleSwitch` control can be styled just like any other WPF control. You can change its appearance by creating a new `Style` with `TargetType="{x:Type local:ToggleSwitch}"`. You can override the control's template to completely change its appearance and behavior.

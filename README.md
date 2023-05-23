@@ -1,27 +1,8 @@
 # Jon.WPF.CustomControls
 
-Welcome to Jon.WPF.CustomControls, a .NET 7.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
-
-![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
-
-![NumericUpDown](https://i.imgur.com/jcoydz5.png)
-
-![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
-
-![TimePicker](https://i.imgur.com/TDHHsJs.png)
-
-![RatingControl](https://i.imgur.com/HcAQvb8.png)
-
-![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
-
-![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
+Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
 
-*Updated WizardControl*
-
-![WizardControl](https://i.imgur.com/S2xEUAe.png)
-
-*Coming Soon* Terminal Control
 
 
 
@@ -60,6 +41,29 @@ You can then use the controls like any other WPF control:
 <custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
+![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
+
+![NumericUpDown](https://i.imgur.com/2Io00Tc.png)
+
+![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
+
+![TimePicker](https://i.imgur.com/TDHHsJs.png)
+
+![RatingControl](https://i.imgur.com/HcAQvb8.png)
+
+![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
+
+![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
+
+![WizardControl](https://i.imgur.com/S2xEUAe.png)
+
+![Terminal Control](https://i.imgur.com/aMN3YlA.png)
+
+**New Calculator Control!**
+
+![Calculator](https://i.imgur.com/JeImAib.png)
+
+
 ## Controls
 
 This library currently includes the following controls:
@@ -74,6 +78,8 @@ This library currently includes the following controls:
 - [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
 - [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
 - [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object.
+- [TerminalControl](./Docs/TerminalControl.md): A console terminal or a terminal for your application as well.
+- [Calculator](./Docs/Calculator.md): A drop-in working calculator control.
 - Coming Soon:
     - CollectionControlDialog - View List or Observable Collection in a dialog window. Each can open up a separate property grid dialog.
     - Range Slider - Two bar slider where a range can be selected.

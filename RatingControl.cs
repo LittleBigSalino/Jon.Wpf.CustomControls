@@ -90,6 +90,7 @@ namespace Jon.Wpf.CustomControls
             DependencyProperty.Register("MouseOverCommand", typeof(ICommand), typeof(RatingControl), new UIPropertyMetadata(null));
         public static readonly DependencyProperty MouseLeaveCommandProperty =
             DependencyProperty.Register("MouseLeaveCommand", typeof(ICommand), typeof(RatingControl), new UIPropertyMetadata(null));
+        
         public event RoutedPropertyChangedEventHandler<double> RatingValueChanged
         {
             add { AddHandler(RatingValueChangedEvent, value); }
@@ -100,9 +101,12 @@ namespace Jon.Wpf.CustomControls
             if (d is RatingControl ratingControl)
             {
                 ratingControl.UpdateStars();
-                ratingControl.RaiseRatingValueChangedEvent();
+                double oldValue = (double)e.OldValue;
+                double newValue = (double)e.NewValue;
+                ratingControl.RaiseRatingValueChangedEvent(oldValue, newValue);
             }
         }
+
         private void RatingControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateStars();
@@ -124,14 +128,12 @@ namespace Jon.Wpf.CustomControls
                 i++;
             }
         }
-
-        private void RaiseRatingValueChangedEvent()
+        private void RaiseRatingValueChangedEvent(double oldValue, double newValue)
         {
-            RoutedEventArgs args = new(RatingValueChangedEvent, this);
-            args.Source = this;
-            args.Handled = false;
+            RoutedPropertyChangedEventArgs<double> args = new(oldValue, newValue, RatingValueChangedEvent);
             RaiseEvent(args);
         }
+
         private void MouseOverAction(object param)
         {
             Path? starOver = param as Path;

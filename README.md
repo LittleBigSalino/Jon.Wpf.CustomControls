@@ -20,6 +20,9 @@ Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library.
 
 Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is built with .NET 7.0 and intended to provide developers with controls that are commonly used but not included in the standard WPF toolkit.
 
+*RECOMMENDATION ARE WELCOME AND WANTED!!*
+
+
 ## Getting Started
 
 1. Clone the repo: `git clone https://github.com/yourusername/Jon.WPF.CustomControls.git`

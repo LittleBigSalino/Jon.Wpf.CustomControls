@@ -3,7 +3,7 @@
 Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
 
 
-
+# Help me make this a comprehensive set of useful controls. Contributions are welcome. Submit suggestions and please submit issues if you find them and I'll fix them.
 
 
 ## Table of Contents

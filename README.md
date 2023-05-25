@@ -22,6 +22,8 @@ Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is b
 *RECOMMENDATIONS ARE WELCOME AND WANTED!!*
 
 
+
+
 ## Getting Started
 
 1. Open Visual Studio 2023 or later.
@@ -30,6 +32,26 @@ Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is b
 4. Type `Install-Package Jon.Wpf.CustomControls` and press Enter to download and install the Jon.WPF.CustomControls NuGet package.
 5. Build your solution to ensure everything is set up correctly.
 6. Start using the controls in your projects!
+
+
+To use the controls, you want to add a reference to the library for your project, plus you will also need to load the default styles for the controls.
+
+To load the default styles, add the following to your App.xaml file:
+
+```xml
+<Application
+    x:Class="ControlDriver.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- HERE --- >
+        <ResourceDictionary Source="pack://application:,,,/Jon.Wpf.CustomControls;component/Themes/Generic.xaml" />
+        <!-- HERE --- >
+    </Application.Resources>
+</Application>
+```
+
 
 
 ## Usage
@@ -60,7 +82,7 @@ You can then use the controls like any other WPF control:
 
 ![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
 
-![WizardControl](https://i.imgur.com/S2xEUAe.png)
+![WizardControl](https://i.imgur.com/iI6KZhK.png)
 
 ![Terminal Control](https://i.imgur.com/aMN3YlA.png)
 

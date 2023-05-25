@@ -32,7 +32,7 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Center"
                                     FontSize="18"
-                                    Text="{Binding Title}"
+                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
                                     TextAlignment="Center" />
                             </Border>
                             <Border
@@ -92,7 +92,8 @@
                                     Width="75"
                                     Margin="5"
                                     Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NextCommand}"
-                                    Content="Next" />
+                                    Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NextButtonText}" />
+
                             </Grid>
                         </Grid>
                     </Border>
@@ -114,7 +115,7 @@
                                 Margin="5"
                                 FontSize="16"
                                 FontWeight="Bold"
-                                Text="{TemplateBinding Title}" />
+                                Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}" />
                             <TextBlock Margin="5" Text="{TemplateBinding Description}" />
                             <ContentPresenter Margin="8" />
                         </StackPanel>

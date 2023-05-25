@@ -11,17 +11,17 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Controls Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal</PackageTags>
+    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator </PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.91</AssemblyVersion>
-    <FileVersion>1.91</FileVersion>
+    <AssemblyVersion>1.93</AssemblyVersion>
+    <FileVersion>1.93</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.91</Version>
+    <Version>1.93</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Fixed TimePicker event now firing. Updated docuementation as well.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed wizard so that the next button is a finish on last wizardpage and finished event fires now. Also fixed main title of wizard so that it shows in the default style.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="gettingStarted.md" pack="true" PackagePath="." />

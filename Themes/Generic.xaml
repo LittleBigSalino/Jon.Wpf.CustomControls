@@ -1,6 +1,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:converters="clr-namespace:Jon.Wpf.CustomControls.Converters"
     xmlns:local="clr-namespace:Jon.Wpf.CustomControls">
 
@@ -808,23 +809,72 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:Flyout}">
+
+
+    <Style TargetType="{x:Type local:CollectionControl}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:Flyout}">
+                <ControlTemplate TargetType="{x:Type local:CollectionControl}">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Popup x:Name="PART_Popup" IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                            <ContentPresenter Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        BorderThickness="1">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="5"
+                                Text="Members" />
+                            <ListBox
+                                x:Name="ListBoxItems"
+                                Grid.Row="1"
+                                MinWidth="150"
+                                MinHeight="200"
+                                Margin="5"
+                                local:SelectionChangedBehavior.Command="{Binding SelectionChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource TemplatedParent}}" />
 
-                        </Popup>
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="5"
+                                Text="Properties" />
+                            <local:PropertyGrid
+                                x:Name="PropertyGridSelectedItem"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Width="300"
+                                MinHeight="200"
+                                Margin="5"
+                                VerticalAlignment="Stretch"
+                                SelectedObject="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=False}" />
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Orientation="Horizontal">
+                                <Button
+                                    Width="80"
+                                    Margin="5"
+                                    Content="Ok" />
+                                <Button
+                                    Width="80"
+                                    Margin="5"
+                                    Content="Cancel" />
+                            </StackPanel>
+                        </Grid>
+
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-
 </ResourceDictionary>
+

@@ -37,12 +37,27 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="ObjectPropertyValueTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="(Object)" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding OpenObjectCommand}"
+                Content="..." />
+        </Grid>
+    </DataTemplate>
+
 
     <local:PropertyGridValueTemplateSelector
         x:Key="PropertyGridValueTemplateSelector"
         CollectionTemplate="{StaticResource CollectionPropertyValueTemplate}"
         DateTimeTemplate="{StaticResource DateTimePropertyValueTemplate}"
-        DefaultTemplate="{StaticResource DefaultPropertyValueTemplate}" />
+        DefaultTemplate="{StaticResource DefaultPropertyValueTemplate}"
+        ObjectTemplate="{StaticResource ObjectPropertyValueTemplate}" />
     <Style TargetType="{x:Type local:PropertyGrid}">
         <Setter Property="Template">
             <Setter.Value>
@@ -251,7 +266,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
+
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -287,19 +302,7 @@
                                 CategoryBackground="CornflowerBlue"
                                 CategoryForeground="Black"
                                 SelectedObject="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=False}" />
-                            <StackPanel
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Orientation="Horizontal">
-                                <Button
-                                    Width="80"
-                                    Margin="5"
-                                    Content="Ok" />
-                                <Button
-                                    Width="80"
-                                    Margin="5"
-                                    Content="Cancel" />
-                            </StackPanel>
+
                         </Grid>
 
                     </Border>

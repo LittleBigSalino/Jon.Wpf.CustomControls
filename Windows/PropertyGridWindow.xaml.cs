@@ -29,5 +29,17 @@ namespace Jon.Wpf.CustomControls.Windows
             PropertyGridMain.SelectedObject = SelectedObject;
             Title = $"Object of type : {parameter.GetType().ToString()}";
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
     }
 }

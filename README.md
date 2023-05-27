@@ -78,7 +78,9 @@ You can then use the controls like any other WPF control:
 
 ![RatingControl](https://i.imgur.com/HcAQvb8.png)
 
-![PropertyGrid](https://i.imgur.com/3Fy8rGs.png)
+*New Expanded Capabilities* includes a CollectionControlWindow where items in the collection will each display their properties in it's propertygrid.
+
+![PropertyGrid](https://i.imgur.com/s5vxLn6.png)
 
 ![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
 

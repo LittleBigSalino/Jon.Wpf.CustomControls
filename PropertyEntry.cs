@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Jon.Wpf.CustomControls.Windows;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -22,10 +23,12 @@ namespace Jon.Wpf.CustomControls
             set { PropertyDescriptor?.SetValue(Instance, value); }
         }
         public ICommand OpenCollectionCommand { get; }
+        public ICommand OpenObjectCommand { get; }
 
         public PropertyEntry()
         {
             OpenCollectionCommand = new RelayCommand(_ => OpenCollection());
+            OpenObjectCommand = new RelayCommand(_ => OpenObject());
         }
 
         public PropertyEntry(PropertyDescriptor propertyDescriptor, object instance, string category = null)
@@ -44,7 +47,21 @@ namespace Jon.Wpf.CustomControls
                 var collection = Value as IEnumerable<object>;
                 if (collection != null)
                 {
-                    
+                    CollectionControlWindow ccw = new CollectionControlWindow(collection);
+                    ccw.ShowDialog();
+                }
+            }
+        }
+
+        private void OpenObject()
+        {
+            if (PropertyDescriptor.PropertyType.GetInterface(nameof(IEnumerable)) != null)
+            {
+                var collection = Value as IEnumerable<object>;
+                if (collection != null)
+                {
+                    CollectionControlWindow ccw = new CollectionControlWindow(collection);
+                    ccw.ShowDialog();
                 }
             }
         }

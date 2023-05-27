@@ -22,8 +22,24 @@
         <DatePicker SelectedDate="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
 
+    <DataTemplate x:Key="CollectionPropertyValueTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="(Collection)" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding OpenCollectionCommand}"
+                Content="..." />
+        </Grid>
+    </DataTemplate>
+
+
     <local:PropertyGridValueTemplateSelector
         x:Key="PropertyGridValueTemplateSelector"
+        CollectionTemplate="{StaticResource CollectionPropertyValueTemplate}"
         DateTimeTemplate="{StaticResource DateTimePropertyValueTemplate}"
         DefaultTemplate="{StaticResource DefaultPropertyValueTemplate}" />
     <Style TargetType="{x:Type local:PropertyGrid}">
@@ -219,5 +235,75 @@
     </Style>
     <Style TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Visibility" Value="Collapsed" />
+    </Style>
+
+
+    <Style TargetType="{x:Type local:CollectionControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CollectionControl}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="5"
+                                Text="Members" />
+                            <ListBox
+                                x:Name="ListBoxItems"
+                                Grid.Row="1"
+                                MinWidth="150"
+                                MinHeight="200"
+                                Margin="5"
+                                ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource TemplatedParent}}" />
+
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="5"
+                                Text="Properties" />
+                            <local:PropertyGrid
+                                x:Name="PropertyGridSelectedItem"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Width="300"
+                                MinHeight="200"
+                                Margin="5"
+                                VerticalAlignment="Stretch"
+                                Background="LightGray"
+                                BorderBrush="Black"
+                                CategoryBackground="CornflowerBlue"
+                                CategoryForeground="Black"
+                                SelectedObject="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=False}" />
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Orientation="Horizontal">
+                                <Button
+                                    Width="80"
+                                    Margin="5"
+                                    Content="Ok" />
+                                <Button
+                                    Width="80"
+                                    Margin="5"
+                                    Content="Cancel" />
+                            </StackPanel>
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

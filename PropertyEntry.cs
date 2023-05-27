@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace Jon.Wpf.CustomControls
 {
@@ -18,14 +21,36 @@ namespace Jon.Wpf.CustomControls
             get { return PropertyDescriptor?.GetValue(Instance); }
             set { PropertyDescriptor?.SetValue(Instance, value); }
         }
+        public ICommand OpenCollectionCommand { get; }
+
         public PropertyEntry()
-        { }
+        {
+            OpenCollectionCommand = new RelayCommand(_ => OpenCollection());
+        }
+
         public PropertyEntry(PropertyDescriptor propertyDescriptor, object instance, string category = null)
+            : this()
         {
             PropertyDescriptor = propertyDescriptor;
             Instance = instance;
             Category = category;
             Name = propertyDescriptor.Name;
         }
+
+        private void OpenCollection()
+        {
+            if (PropertyDescriptor.PropertyType.GetInterface(nameof(IEnumerable)) != null)
+            {
+                var collection = Value as IEnumerable<object>;
+                if (collection != null)
+                {
+                    
+                }
+            }
+        }
+
+
+
+
     }
 }

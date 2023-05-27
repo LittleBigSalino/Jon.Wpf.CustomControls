@@ -7,9 +7,7 @@
     <converters:ColorToBrushConverter x:Key="ColorToBrushConverter" />
     <converters:BrushToColorConverter x:Key="BrushToColorConverter" />
     <converters:PropertyNameConverter x:Key="PropertyNameConverter" />
-    <DataTemplate x:Key="DefaultPropertyValueTemplate">
-        <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-    </DataTemplate>
+
     <SolidColorBrush x:Key="DefaultCategoryColor" Color="#4E94DB" />
     <SolidColorBrush x:Key="DefaultCategoryForeground" Color="White" />
     <SolidColorBrush x:Key="GrayBorderColor" Color="#FFD2D2D2" />
@@ -18,6 +16,9 @@
     <SolidColorBrush x:Key="CategoryForeground" Color="White" />
     <SolidColorBrush x:Key="RowAlternatingBackground" Color="#F7F7F7" />
     <SolidColorBrush x:Key="BorderBackgroundPropertyValueField" Color="LightGray" />
+    <DataTemplate x:Key="DefaultPropertyValueTemplate">
+        <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+    </DataTemplate>
     <DataTemplate x:Key="DateTimePropertyValueTemplate">
         <DatePicker SelectedDate="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>

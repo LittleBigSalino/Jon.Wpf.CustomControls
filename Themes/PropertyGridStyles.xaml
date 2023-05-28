@@ -17,10 +17,10 @@
     <SolidColorBrush x:Key="RowAlternatingBackground" Color="#F7F7F7" />
     <SolidColorBrush x:Key="BorderBackgroundPropertyValueField" Color="LightGray" />
     <DataTemplate x:Key="DefaultPropertyValueTemplate">
-        <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox IsReadOnly="True" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
     <DataTemplate x:Key="DateTimePropertyValueTemplate">
-        <DatePicker SelectedDate="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <DatePicker IsEnabled="False" SelectedDate="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
 
     <DataTemplate x:Key="CollectionPropertyValueTemplate">

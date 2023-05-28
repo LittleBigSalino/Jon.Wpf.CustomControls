@@ -810,8 +810,96 @@
     </Style>
 
 
+    <Style TargetType="{x:Type local:PersonPicture}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PersonPicture}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Ellipse
+                            x:Name="PictureEllipse"
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Stretch="Uniform"
+                            Stroke="Black"
+                            StrokeThickness="1">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding PictureSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            Panel.ZIndex="-1"
+                            Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            Stroke="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                            StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <TextBlock
+                            x:Name="InitialsTextBlock"
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="{Binding FontFamily, RelativeSource={RelativeSource TemplatedParent}}"
+                            FontSize="36"
+                            Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                            Text="{Binding DisplayName, RelativeSource={RelativeSource TemplatedParent}}"
+                            Visibility="Collapsed" />
+                        <Ellipse
+                            x:Name="StatusEllipse"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            MinWidth="5"
+                            MinHeight="5"
+                            Margin="0,0,3,3"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding StatusPictureSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  
+    <!--<Style TargetType="{x:Type local:PersonPicture}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PersonPicture}">
+                    <Grid>
+                        <Ellipse Width="100" Height="100">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{TemplateBinding PictureSource}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse
+                            Width="20"
+                            Height="20"
+                            Margin="0,0,10,10"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{TemplateBinding StatusPictureSource}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
 
 </ResourceDictionary>
 

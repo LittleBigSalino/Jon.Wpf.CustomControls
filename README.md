@@ -68,6 +68,10 @@ You can then use the controls like any other WPF control:
 <custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
+*New PersonPicture Control*
+
+![PersonPicture](https://i.imgur.com/1AAKcz8.png)
+
 ![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
 
 ![NumericUpDown](https://i.imgur.com/m0Ey5nG.png?1)
@@ -106,6 +110,7 @@ This library currently includes the following controls:
 - [TimePicker](./Docs/TimePicker.md): A time selection control.
 - [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
 - [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
+- [PersonPicture](./Docs/PersonPicture.md):Person Icon Status control.
 - [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object.
 - [TerminalControl](./Docs/TerminalControl.md): A console terminal or a terminal for your application as well.
 - [Calculator](./Docs/Calculator.md): A drop-in working calculator control.

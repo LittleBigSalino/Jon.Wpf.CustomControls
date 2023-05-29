@@ -56,7 +56,15 @@ namespace Jon.Wpf.CustomControls
                 _initialsTextBlock.Text = initials;
             }
         }
-        
+        public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
+    "StrokeThickness", typeof(double), typeof(PersonPicture), new PropertyMetadata(default(double)));
+
+        public double StrokeThickness
+        {
+            get => (double)GetValue(StrokeThicknessProperty);
+            set => SetValue(StrokeThicknessProperty, value);
+        }
+
 
         public static readonly DependencyProperty PictureSourceProperty = DependencyProperty.Register(
             "PictureSource", typeof(ImageSource), typeof(PersonPicture), new PropertyMetadata(default(ImageSource)));

@@ -11,17 +11,17 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LittleBigSalino/Jon.Wpf.CustomControls#getting-started</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator </PackageTags>
+    <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator Person Picture</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.94</AssemblyVersion>
-    <FileVersion>1.94</FileVersion>
+    <AssemblyVersion>1.96</AssemblyVersion>
+    <FileVersion>1.96</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.94</Version>
+    <Version>1.96</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Added CollectionControl and CollectionControlWindow as well as PropertyGridWindow. Combined you can see children objects indefinitely deep. More documentation to follow.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updates to Person picture no longer using border thickness, now using StrokeThickness and add new TtsReader control.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="gettingStarted.md" pack="true" PackagePath="." />
@@ -72,6 +72,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="System.Speech" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

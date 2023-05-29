@@ -86,7 +86,7 @@ You can then use the controls like any other WPF control:
 
 *New TimeTextBox*
 
-![TimeTextBox](https://i.imgur.com/mkLLHni.png)
+![TimeTextBox](https://i.imgur.com/AP1x2Pb.png)
 
 ![RatingControl](https://i.imgur.com/HcAQvb8.png)
 

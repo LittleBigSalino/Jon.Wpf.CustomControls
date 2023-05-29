@@ -902,5 +902,12 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type local:TimeTextBox}">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+    </Style>
+
 </ResourceDictionary>
 

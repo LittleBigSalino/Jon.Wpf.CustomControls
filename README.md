@@ -72,6 +72,10 @@ You can then use the controls like any other WPF control:
 
 ![PersonPicture](https://i.imgur.com/1AAKcz8.png)
 
+*New TtsReader Control* Bindable to text in another control or other options
+
+![TtsReader](https://i.imgur.com/WjrNDhT.png)
+
 ![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
 
 ![NumericUpDown](https://i.imgur.com/m0Ey5nG.png?1)
@@ -79,6 +83,10 @@ You can then use the controls like any other WPF control:
 ![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
 
 ![TimePicker](https://i.imgur.com/TDHHsJs.png)
+
+*New TimeTextBox*
+
+![TimeTextBox](https://i.imgur.com/mkLLHni.png)
 
 ![RatingControl](https://i.imgur.com/HcAQvb8.png)
 
@@ -108,6 +116,8 @@ This library currently includes the following controls:
 - [ColorPaletteControl](./Docs/ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
 - [RatingControl](./Docs/RatingControl.md): A control for rating items on a scale.
 - [TimePicker](./Docs/TimePicker.md): A time selection control.
+- [TimeTextBox](./Docs/TimeTextBox.md): A time selection control.
+- [TtsReader](./Docs/TtsReader.md): A text to speech reading control.
 - [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
 - [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
 - [PersonPicture](./Docs/PersonPicture.md):Person Icon Status control.

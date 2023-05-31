@@ -39,6 +39,16 @@ namespace Jon.Wpf.CustomControls
             control.UpdateDisplay();
         }
 
+        public static readonly DependencyProperty StatusTextProperty = DependencyProperty.Register(
+    "StatusText", typeof(string), typeof(PersonPicture), new PropertyMetadata(default(string)));
+
+        public string StatusText
+        {
+            get => (string)GetValue(StatusTextProperty);
+            set => SetValue(StatusTextProperty, value);
+        }
+
+
         private void UpdateDisplay()
         {
             if (PictureSource != null)

@@ -116,4 +116,8 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Nuget\" />
+  </ItemGroup>
+
 </Project>

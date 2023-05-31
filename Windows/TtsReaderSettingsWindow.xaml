@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Jon.Wpf.CustomControls.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="TtsReader Settings"
+    SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -31,6 +32,7 @@
             x:Name="VoiceComboBox"
             Grid.Row="0"
             Grid.Column="1"
+            Width="300"
             Margin="5"
             ItemsSource="{Binding Voices}"
             SelectedItem="{Binding Voice, Mode=OneTime}" />
@@ -51,6 +53,7 @@
             x:Name="SpeedSlider"
             Grid.Row="1"
             Grid.Column="1"
+            Width="300"
             Margin="5"
             Maximum="10"
             Minimum="-10"
@@ -66,6 +69,7 @@
             x:Name="VolumeSlider"
             Grid.Row="2"
             Grid.Column="1"
+            Width="300"
             Margin="5"
             Maximum="100"
             Minimum="0"
@@ -105,6 +109,7 @@
         <StackPanel
             Grid.Row="3"
             Grid.Column="1"
+            Width="300"
             Margin="5"
             Orientation="Horizontal">
             <TextBox

@@ -253,6 +253,66 @@
         <Setter Property="Padding" Value="5" />
         <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AutocompleteTextBox}">
+                    <Grid>
+                        <TextBox
+                            x:Name="PART_TextBox"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="GotFocus">
+                                    <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:AutocompleteTextBox}}, Path=ShowSuggestionsCommand}" />
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </TextBox>
+                        <Popup
+                            x:Name="PART_Popup"
+                            Panel.ZIndex="3"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            PlacementTarget="{Binding ElementName=PART_TextBox}"
+                            StaysOpen="True">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Opened">
+                                    <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:AutocompleteTextBox}}, Path=FocusListBoxCommand}" />
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <ListBox
+                                x:Name="PART_ListBox"
+                                DisplayMemberPath="{Binding SuggestionsDisplayMemberPath, RelativeSource={RelativeSource TemplatedParent}}"
+                                ItemsSource="{Binding FilteredItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="SelectionChanged">
+                                        <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:AutocompleteTextBox}}, Path=SelectSuggestionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}}, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" />
+
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding RelativePosition}" Value="0">
+                                                <Setter Property="IsSelected" Value="True" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
+
+
+
 </ResourceDictionary>
 

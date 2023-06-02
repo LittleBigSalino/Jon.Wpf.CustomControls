@@ -2,6 +2,7 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -10,8 +11,73 @@ using System.Windows.Input;
 namespace Jon.Wpf.CustomControls
 {
 
-    public class AutocompleteTextBox : TextBox
+    public class AutocompleteTextBox : TextBox, INotifyPropertyChanged
     {
+        public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
+    "SelectedItem", typeof(object), typeof(AutocompleteTextBox), new PropertyMetadata(null));
+
+        public object SelectedItem
+        {
+            get { return GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool _isDropDownOpen;
+        public bool IsDropDownOpen
+        {
+            get { return _isDropDownOpen; }
+            set
+            {
+                _isDropDownOpen = value;
+                OnPropertyChanged();
+            }
+        }
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            base.OnGotFocus(e);
+
+            // Display the dropdown when the TextBox receives focus
+            IsDropDownOpen = true;
+
+            var filteredItems = ItemsSource.Cast<object>()
+                .Where(item => GetDisplayString(item).StartsWith(Text, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            // Set the ItemsSource of the ListBox to the filtered items
+            FilteredItemsSource = filteredItems;
+
+            // Show the Popup if there are any filtered items
+            IsDropDownOpen = filteredItems.Any();
+        }
+
+        public static readonly DependencyProperty ShowSuggestionsCommandProperty = DependencyProperty.Register(
+     "ShowSuggestionsCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
+
+        public ICommand ShowSuggestionsCommand
+        {
+            get { return (ICommand)GetValue(ShowSuggestionsCommandProperty); }
+            set { SetValue(ShowSuggestionsCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty FilteredItemsSourceProperty = DependencyProperty.Register(
+            "FilteredItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(default(IEnumerable)));
+
+        public IEnumerable FilteredItemsSource
+        {
+            get { return (IEnumerable)GetValue(FilteredItemsSourceProperty); }
+            set { SetValue(FilteredItemsSourceProperty, value); }
+        }
+
+
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
             "ItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(null));
 
@@ -39,9 +105,47 @@ namespace Jon.Wpf.CustomControls
             set { SetValue(SelectSuggestionCommandProperty, value); }
         }
 
+        public static readonly DependencyProperty FocusListBoxCommandProperty = DependencyProperty.Register(
+    "FocusListBoxCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
+
+        public ICommand FocusListBoxCommand
+        {
+            get { return (ICommand)GetValue(FocusListBoxCommandProperty); }
+            set { SetValue(FocusListBoxCommandProperty, value); }
+        }
+
         public AutocompleteTextBox()
         {
             SelectSuggestionCommand = new RelayCommand<object>(SelectSuggestion);
+            ShowSuggestionsCommand = new RelayCommand<object>(ShowSuggestions);
+            FocusListBoxCommand = new RelayCommand<object>(_ => FocusListBox());
+        }
+
+        private void ShowSuggestions(object obj)
+        {
+            IsDropDownOpen = true;
+        }
+
+        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseDown(e);
+
+            // Set focus to the TextBox
+            Focus();
+        }
+
+        private ListBox _listBox;
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _listBox = GetTemplateChild("PART_ListBox") as ListBox;
+        }
+
+        private void FocusListBox()
+        {
+            _listBox?.Focus();
         }
 
         protected override void OnTextChanged(TextChangedEventArgs e)
@@ -53,8 +157,11 @@ namespace Jon.Wpf.CustomControls
                 .Where(item => GetDisplayString(item).StartsWith(Text, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-            // TODO: Set the ItemsSource of the ListBox to the filtered items
-            // TODO: Show the Popup if there are any filtered items
+            // Set the ItemsSource of the ListBox to the filtered items
+            FilteredItemsSource = filteredItems;
+
+            // Show the Popup if there are any filtered items
+            IsDropDownOpen = filteredItems.Any();
         }
 
         private string GetDisplayString(object item)
@@ -73,8 +180,13 @@ namespace Jon.Wpf.CustomControls
             // Set the text of the TextBox to the selected suggestion
             Text = GetDisplayString(item);
 
-            // TODO: Hide the Popup
+            // Set the SelectedItem property to the selected item
+            SelectedItem = item;
+
+            // Hide the Popup
+            IsDropDownOpen = false;
         }
+
     }
 
 }

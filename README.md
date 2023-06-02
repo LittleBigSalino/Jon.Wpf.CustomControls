@@ -68,11 +68,11 @@ You can then use the controls like any other WPF control:
 <custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
-*New PersonPicture Control*
+*New AutoCompleteTextBox Control*
+
+![AutoCompleteTextBox](https://i.imgur.com/4vOf2kj.png)
 
 ![PersonPicture](https://i.imgur.com/1AAKcz8.png)
-
-*New TtsReader Control* Bindable to text in another control or other options
 
 ![TtsReader](https://i.imgur.com/WjrNDhT.png)
 
@@ -109,6 +109,7 @@ You can then use the controls like any other WPF control:
 
 This library currently includes the following controls:
 
+- [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed. 
 - [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons. *NEW*
 - [WizardControl](./Docs/WizardControl.md): A control that presents a series of WizardPages to assist the user in performing a task or series of tasks. *NEW* 
 - [WizardPage](./Docs/WizardPage.md): A page within a WizardControl that contains content to guide the user through a specific part of the task. *NEW* 

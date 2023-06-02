@@ -13,15 +13,15 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator Person Picture</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.97</AssemblyVersion>
-    <FileVersion>1.97</FileVersion>
+    <AssemblyVersion>1.98</AssemblyVersion>
+    <FileVersion>1.98</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.97</Version>
+    <Version>1.98</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Added timetextbox and ttsreader documentation and timetextbox docuementation. still just expanding the library, will make another pass at all the control to add any missing event or dependency properties soon.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added dependency property for personpicture, status text... And start working on autocomplete text box, also reogranize structure so hopefuly no issues.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="gettingStarted.md" pack="true" PackagePath="." />

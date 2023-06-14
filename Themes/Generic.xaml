@@ -34,33 +34,7 @@
 
     <!--  CustomControl1  -->
 
-    <Style x:Key="TimePickerModernLight" TargetType="{x:Type local:TimePicker}">
-        <Setter Property="Background" Value="#FF3B3B3B" />
-        <Setter Property="BorderBrush" Value="#FFB3A2A2" />
-        <Setter Property="BorderThickness" Value=".7" />
 
-        <Setter Property="Foreground" Value="#FFD6D6D6" />
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="FontFamily" Value="Calibri" />
-    </Style>
-    <Style x:Key="DarkThemeStyle" TargetType="{x:Type local:TimePicker}">
-        <Setter Property="Background" Value="Black" />
-        <Setter Property="BorderBrush" Value="DarkGray" />
-        <Setter Property="BorderThickness" Value=".4" />
-        <Setter Property="Foreground" Value="DarkGray" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontFamily" Value="Segoe UI" />
-    </Style>
-    <Style x:Key="ElegantStyle" TargetType="{x:Type local:TimePicker}">
-        <Setter Property="Background" Value="#FF3B3B3B" />
-        <Setter Property="BorderBrush" Value="#FFB3A2A2" />
-        <Setter Property="BorderThickness" Value=".7" />
-        <Setter Property="FontWeight" Value="Light" />
-        <Setter Property="Foreground" Value="#FFD6D6D6" />
-        <Setter Property="FontStyle" Value="Italic" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontFamily" Value="Calibri" />
-    </Style>
 
     <!--  TimePicker  -->
 
@@ -110,6 +84,7 @@
                                     Background="Black">
                                     <TextBox
                                         Grid.Row="1"
+                                        HorizontalAlignment="Stretch"
                                         local:TextBoxEnterCommandBehavior.EnterCommand="{Binding ExecuteCommandCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}"
                                         Background="Black"
                                         BorderThickness="1"
@@ -119,14 +94,19 @@
                                         Text="{Binding InputText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                         <TextBox.Template>
                                             <ControlTemplate TargetType="TextBox">
-                                                <StackPanel Orientation="Horizontal">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
                                                     <TextBlock
+                                                        HorizontalAlignment="Stretch"
                                                         Background="Black"
                                                         FontFamily="Consolas"
                                                         Foreground="LimeGreen"
                                                         Text="{Binding CurrentDirectory, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TerminalControl}}}" />
-                                                    <ScrollViewer x:Name="PART_ContentHost" />
-                                                </StackPanel>
+                                                    <ScrollViewer x:Name="PART_ContentHost" Grid.Column="1" />
+                                                </Grid>
                                             </ControlTemplate>
                                         </TextBox.Template>
                                     </TextBox>
@@ -307,6 +287,141 @@
                             </ListBox>
                         </Popup>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <Style TargetType="{x:Type local:AutoCompleteTextBoxControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AutoCompleteTextBoxControl}">
+                    <Grid>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+
+                            <!--  Text Box  -->
+                            <Border
+                                x:Name="PART_AutoTextBoxBorder"
+                                Width="220"
+                                BorderBrush="Black"
+                                BorderThickness=".8">
+
+                                <!--<Border.Background>
+                                    <ImageBrush ImageSource="/WPFAutoCompleteTextBox;component/Content/img/text-box_bg.png" />
+                                </Border.Background>-->
+
+                                <TextBox
+                                    x:Name="PART_AutoTextBox"
+                                    Width="220"
+                                    Padding="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="18"
+                                    Foreground="Black" />
+                            </Border>
+
+                            <!--  Auto Suggestion box  -->
+                            <Popup
+                                x:Name="PART_AutoListPopup"
+                                Height="100"
+                                Placement="Bottom"
+                                StaysOpen="False"
+                                Visibility="Collapsed">
+
+                                <ListBox
+                                    x:Name="PART_AutoList"
+                                    Width="500"
+                                    Height="100"
+                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                    Visibility="Collapsed" />
+                            </Popup>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--<Style TargetType="{x:Type local:SentimentAnalysisLabel}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#333" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderBrush" Value="#999" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>-->
+    <Style TargetType="local:SentimentAnalysisLabel">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="PositiveBrush" Value="LightGreen" />
+        <Setter Property="NegativeBrush" Value="LightCoral" />
+        <Setter Property="NeutralBrush" Value="LightGray" />
+        <Setter Property="ErrorBrush" Value="LightSalmon" />
+    </Style>
+    <Style TargetType="local:SummarizationTextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontStretch" Value="SemiCondensed" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+        <!--<Setter Property="MaxWords" Value="50" />-->
+    </Style>
+    <Style TargetType="{x:Type local:TextToSqlQueryTextBlock}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TextToSqlQueryTextBlock}">
+                    <Border
+                        Padding="10"
+                        Background="#EEE"
+                        BorderBrush="#CCC"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <Grid>
+                            <RichTextBox x:Name="PART_DisplayText" IsReadOnly="True" />
+                            <Button
+                                Name="PART_CopyButton"
+                                Width="32"
+                                Height="32"
+                                Margin="5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="#CCC" CornerRadius="5">
+                                            <ContentPresenter />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#BBB" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <Path
+                                    Width="16"
+                                    Height="16"
+                                    Data="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"
+                                    Fill="#FF080000" />
+                            </Button>
+                        </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -45,7 +45,7 @@
                                         Margin="1,2,1,2"
                                         VerticalAlignment="Bottom"
                                         DockPanel.Dock="Bottom"
-                                        Source="/Jon.Wpf.CustomControls;component/Themes/newTallWiz.png"
+                                        Source="/Jon.Wpf.CustomControls;component/images/BlueWizardNew.png"
                                         Stretch="Uniform"
                                         StretchDirection="Both" />
                                 </DockPanel>

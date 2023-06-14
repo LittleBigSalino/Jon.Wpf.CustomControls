@@ -187,6 +187,43 @@ namespace Jon.Wpf.CustomControls
             IsDropDownOpen = false;
         }
 
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            base.OnPreviewKeyDown(e);
+
+            if (e.Key == Key.Down)
+            {
+                // If the ListBox is not focused, focus it and select the first item
+                if (!Equals(FocusManager.GetFocusedElement(this), _listBox))
+                {
+                    _listBox.Focus();
+                    if (_listBox.SelectedIndex == -1)
+                    {
+                        _listBox.SelectedIndex = 0;
+                    }
+                }
+                // If the ListBox is already focused, select the next item
+                else if (_listBox.SelectedIndex < _listBox.Items.Count - 1)
+                {
+                    _listBox.SelectedIndex++;
+                }
+
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Up)
+            {
+                // If the ListBox is focused and the selected index is not the first one, select the previous item
+                if (Equals(FocusManager.GetFocusedElement(this), _listBox) && _listBox.SelectedIndex > 0)
+                {
+                    _listBox.SelectedIndex--;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
     }
 
 }

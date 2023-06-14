@@ -13,21 +13,22 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator Person Picture</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>1.98</AssemblyVersion>
-    <FileVersion>1.98</FileVersion>
+    <AssemblyVersion>2.01</AssemblyVersion>
+    <FileVersion>2.01</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>1.98</Version>
+    <Version>2.01</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>
-    <PackageReleaseNotes>Added dependency property for personpicture, status text... And start working on autocomplete text box, also reogranize structure so hopefuly no issues.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added two new ChatGPT controls that work with the OpenAPI http REST api</PackageReleaseNotes>    
   </PropertyGroup>
   <ItemGroup>
     <None Include="gettingStarted.md" pack="true" PackagePath="." />
   </ItemGroup>
   <ItemGroup>
     <None Remove="gettingStarted.md" />
+    <None Remove="images\BlueWizardNew.png" />
     <None Remove="images\EvaIcons-ArrowCircleUp.png" />
     <None Remove="images\Unicons-ArrowCircleDown.png" />
     <None Remove="images\wizard.png" />
@@ -41,6 +42,9 @@
       <Pack>true</Pack>
       <PackagePath>\</PackagePath>
     </Content>
+    <Resource Include="images\BlueWizardNew.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\EvaIcons-ArrowCircleUp.png">
@@ -71,6 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.24.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="System.Speech" Version="7.0.0" />
   </ItemGroup>

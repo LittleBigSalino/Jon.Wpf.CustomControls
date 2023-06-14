@@ -132,6 +132,42 @@ namespace Jon.Wpf.CustomControls
             remove { RemoveHandler(SelectedTimeChangedEvent, value); }
         }
 
+        //private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (d is TimePicker timePicker)
+        //    {
+        //        // Check which property changed
+        //        if (e.Property == SelectedHourProperty || e.Property == SelectedMinuteProperty || e.Property == SelectedAmPmProperty)
+        //        {
+        //            // Handle SelectedHour, SelectedMinute, and SelectedAmPm changes
+        //            DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
+        //            int newHour = timePicker.SelectedHour;
+        //            int newMinute = timePicker.SelectedMinute;
+
+        //            if (timePicker.SelectedAmPm == 1 && newHour < 12)
+        //            {
+        //                newHour += 12;
+        //            }
+        //            else if (timePicker.SelectedAmPm == 0 && newHour >= 12)
+        //            {
+        //                newHour -= 12;
+        //            }
+
+        //            DateTime? newValue = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, newMinute, currentTime.Second);
+
+        //            // Don't raise the event here; we'll raise it after handling SelectedTime changes
+        //            timePicker.SelectedTime = newValue;
+        //        }
+        //        else if (e.Property == SelectedTimeProperty)
+        //        {
+        //            // Handle SelectedTime changes
+        //            DateTime? oldValue = (DateTime?)e.OldValue;
+        //            DateTime? newValue = (DateTime?)e.NewValue;
+
+        //            timePicker.RaiseSelectedTimeChangedEvent(oldValue, newValue);
+        //        }
+        //    }
+        //}
         private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is TimePicker timePicker)
@@ -155,19 +191,44 @@ namespace Jon.Wpf.CustomControls
 
                     DateTime? newValue = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, newMinute, currentTime.Second);
 
-                    // Don't raise the event here; we'll raise it after handling SelectedTime changes
-                    timePicker.SelectedTime = newValue;
+                    // Check to prevent recursive call
+                    if (timePicker.SelectedTime != newValue)
+                    {
+                        // Don't raise the event here; we'll raise it after handling SelectedTime changes
+                        timePicker.SelectedTime = newValue;
+                    }
                 }
                 else if (e.Property == SelectedTimeProperty)
                 {
                     // Handle SelectedTime changes
-                    DateTime? oldValue = (DateTime?)e.OldValue;
                     DateTime? newValue = (DateTime?)e.NewValue;
 
+                    // Update SelectedHour, SelectedMinute, and SelectedAmPm according to the new SelectedTime
+                    if (newValue.HasValue)
+                    {
+                        // Check to prevent recursive calls
+                        if (timePicker.SelectedHour != newValue.Value.Hour % 12)
+                        {
+                            timePicker.SelectedHour = newValue.Value.Hour % 12;
+                        }
+                        if (timePicker.SelectedMinute != newValue.Value.Minute)
+                        {
+                            timePicker.SelectedMinute = newValue.Value.Minute;
+                        }
+                        if (timePicker.SelectedAmPm != (newValue.Value.Hour >= 12 ? 1 : 0))
+                        {
+                            timePicker.SelectedAmPm = newValue.Value.Hour >= 12 ? 1 : 0;
+                        }
+                    }
+
+                    // Raise the SelectedTimeChanged event
+                    DateTime? oldValue = (DateTime?)e.OldValue;
                     timePicker.RaiseSelectedTimeChangedEvent(oldValue, newValue);
                 }
             }
         }
+
+
 
 
         private static void OnIs24HourFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

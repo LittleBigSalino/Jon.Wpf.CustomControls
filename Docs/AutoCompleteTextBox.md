@@ -3,6 +3,8 @@
 
 This repository contains a custom WPF control called `AutocompleteTextBox`. This control extends the standard WPF `TextBox` and adds autocomplete functionality to it.
 
+![AutoCompleteTextBox](https://i.imgur.com/4vOf2kj.png)
+
 ## Features
 
 - Autocomplete functionality: As you type in the `TextBox`, a dropdown list appears with suggestions that match the entered text.

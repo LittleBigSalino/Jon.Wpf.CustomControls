@@ -68,7 +68,13 @@ You can then use the controls like any other WPF control:
 <custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
-*New AutoCompleteTextBox Control*
+## New OpenAI ChatGPT Integrated Controls
+
+![SentimentAnalysisLabel](https://i.imgur.com/OhONHpj.png)
+
+![SentimentAnalysisLabel](https://i.imgur.com/aLeWMtd.png)
+
+![SentimentAnalysisLabel](https://i.imgur.com/KG3eaqg.png)
 
 ![AutoCompleteTextBox](https://i.imgur.com/4vOf2kj.png)
 
@@ -108,7 +114,8 @@ You can then use the controls like any other WPF control:
 ## Controls
 
 This library currently includes the following controls:
-
+- [SentimentAnalysisLabel](./Docs/SentimentAnalysisLabel.md): Negative/Positve Sentiment Analysis Text you can bind to text for sentiment.
+- [SummarizationTextBlock](./Docs/SummarizationTextBlock.md): Summarization of bound text from Chat GPT.
 - [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed. 
 - [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons. *NEW*
 - [WizardControl](./Docs/WizardControl.md): A control that presents a series of WizardPages to assist the user in performing a task or series of tasks. *NEW* 

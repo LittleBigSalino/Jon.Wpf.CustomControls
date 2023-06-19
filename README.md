@@ -70,6 +70,8 @@ You can then use the controls like any other WPF control:
 
 ## New OpenAI ChatGPT Integrated Controls
 
+![TextToSqlQueryTextBlock](https://i.imgur.com/ClJUlvN.png)
+
 ![SentimentAnalysisLabel](https://i.imgur.com/OhONHpj.png)
 
 ![SentimentAnalysisLabel](https://i.imgur.com/aLeWMtd.png)
@@ -114,9 +116,10 @@ You can then use the controls like any other WPF control:
 ## Controls
 
 This library currently includes the following controls:
-- [SentimentAnalysisLabel](./Docs/SentimentAnalysisLabel.md): Negative/Positve Sentiment Analysis Text you can bind to text for sentiment.
+
+- [SentimentAnalysisLabel](./Docs/SentimentAnalysisLabel.md): Negative/Positive Sentiment Analysis Text you can bind to text for sentiment.
 - [SummarizationTextBlock](./Docs/SummarizationTextBlock.md): Summarization of bound text from Chat GPT.
-- [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed. 
+- [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed.
 - [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons. *NEW*
 - [WizardControl](./Docs/WizardControl.md): A control that presents a series of WizardPages to assist the user in performing a task or series of tasks. *NEW* 
 - [WizardPage](./Docs/WizardPage.md): A page within a WizardControl that contains content to guide the user through a specific part of the task. *NEW* 
@@ -128,13 +131,12 @@ This library currently includes the following controls:
 - [TtsReader](./Docs/TtsReader.md): A text to speech reading control.
 - [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
 - [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
-- [PersonPicture](./Docs/PersonPicture.md):Person Icon Status control.
-- [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object.
+- [PersonPicture](./Docs/PersonPicture.md): Person Icon Status control.
+- [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object. Includes CollectionControl
 - [TerminalControl](./Docs/TerminalControl.md): A console terminal or a terminal for your application as well.
 - [Calculator](./Docs/Calculator.md): A drop-in working calculator control.
-- Coming Soon:
-    - CollectionControlDialog - View List or Observable Collection in a dialog window. Each can open up a separate property grid dialog.
-    - Range Slider - Two bar slider where a range can be selected.
+- [TextToSqlQueryTextBlock](./Docs/TextToSqlQueryTextBlock.md): Translates English text into SQL queries using GPT-3 and displays the result. *NEW*
+
 
 Please refer to each control's documentation for more details.
 

@@ -394,9 +394,14 @@
                         BorderThickness="1"
                         CornerRadius="5">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
                             <RichTextBox x:Name="PART_DisplayText" IsReadOnly="True" />
                             <Button
                                 Name="PART_CopyButton"
+                                Grid.Column="1"
                                 Width="32"
                                 Height="32"
                                 Margin="5"

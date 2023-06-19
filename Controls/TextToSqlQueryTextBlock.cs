@@ -119,19 +119,55 @@ namespace Jon.Wpf.CustomControls
             }
         }
 
+        //private void DisplayFormattedSql(string sqlQuery)
+        //{
+        //    var displayText = GetTemplateChild("PART_DisplayText") as RichTextBox;
+        //    displayText.Document.Blocks.Clear();
+
+        //    var paragraph = new Paragraph();
+
+        //    // Split the SQL query into words.
+        //    var words = sqlQuery.Split(new[] { ' ', '\t', '\n', '\r', '(', ')', ';', ',' }, StringSplitOptions.RemoveEmptyEntries);
+        //    foreach (var word in words)
+        //    {
+        //        // If the word is a SQL keyword, apply the highlight.
+        //        if (sqlKeywords.Contains(word.ToLower()))
+        //        {
+        //            var run = new Run(word) { Foreground = Brushes.Blue };
+        //            paragraph.Inlines.Add(run);
+        //        }
+        //        else
+        //        {
+        //            paragraph.Inlines.Add(new Run(word));
+        //        }
+
+        //        // Add a space after each word.
+        //        paragraph.Inlines.Add(new Run(" "));
+        //    }
+
+        //    displayText.Document.Blocks.Add(paragraph);
+        //}
+
         private void DisplayFormattedSql(string sqlQuery)
         {
             var displayText = GetTemplateChild("PART_DisplayText") as RichTextBox;
             displayText.Document.Blocks.Clear();
-
             var paragraph = new Paragraph();
-
-            // Split the SQL query into words.
             var words = sqlQuery.Split(new[] { ' ', '\t', '\n', '\r', '(', ')', ';', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var word in words)
+
+            for (int i = 0; i < words.Length; i++)
             {
-                // If the word is a SQL keyword, apply the highlight.
-                if (sqlKeywords.Contains(word.ToLower()))
+                string word = words[i];
+                string nextWord = i < words.Length - 1 ? words[i + 1] : null;
+
+                // If the current word and the next word form a SQL keyword, treat them as one keyword.
+                if (nextWord != null && sqlKeywords.Contains((word + " " + nextWord).ToLower()))
+                {
+                    var run = new Run(word + " " + nextWord) { Foreground = Brushes.Blue };
+                    paragraph.Inlines.Add(run);
+                    i++; // Skip the next word as it's part of the current keyword.
+                }
+                else if (sqlKeywords.Contains(word.ToLower()))
                 {
                     var run = new Run(word) { Foreground = Brushes.Blue };
                     paragraph.Inlines.Add(run);
@@ -141,12 +177,12 @@ namespace Jon.Wpf.CustomControls
                     paragraph.Inlines.Add(new Run(word));
                 }
 
-                // Add a space after each word.
+                // Add a space after each keyword/word.
                 paragraph.Inlines.Add(new Run(" "));
             }
-
             displayText.Document.Blocks.Add(paragraph);
         }
+
 
 
 

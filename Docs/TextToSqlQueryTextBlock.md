@@ -1,7 +1,8 @@
-﻿
-# TextToSqlQueryTextBlock
+﻿# TextToSqlQueryTextBlock
 
 TextToSqlQueryTextBlock is a WPF custom control that accepts English text and translates it into SQL using OpenAI's GPT-3. The SQL query is then displayed in a RichTextBox with SQL keywords highlighted.
+
+![TextToSqlQueryTextBlock](https://i.imgur.com/ClJUlvN.png)
 
 ## Features
 
@@ -19,11 +20,10 @@ TextToSqlQueryTextBlock is a WPF custom control that accepts English text and tr
 ### Installation
 
 1. Install the `Jon.Wpf.CustomControls` NuGet package in Visual Studio. You can do this by right-clicking your project in the Solution Explorer, selecting "Manage NuGet Packages", searching for `Jon.Wpf.CustomControls`, and clicking "Install".
-
-2. If you prefer to build from source, you can clone the full library from GitHub:
-   ```sh
-   git clone https://github.com/LittleBigSalino/Jon.Wpf.CustomControls.git
-   ```
+2. If you prefer to build from source, you can clone the full library from GitHub: 
+```sh 
+git clone https://github.com/LittleBigSalino/Jon.Wpf.CustomControls.git
+```
 3. Add a reference to `Jon.Wpf.CustomControls.dll` in your project.
 
 ## Usage

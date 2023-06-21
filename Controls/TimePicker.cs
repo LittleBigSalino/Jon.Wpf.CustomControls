@@ -1,13 +1,19 @@
 ﻿
 
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Jon.Wpf.CustomControls
 {
     public class TimePicker : Control
     {
+
+        private int? newSelectedHour;
+        private int? newSelectedMinute;
+        private int? newSelectedAmPm;
         // Add null checks for SelectedTime in properties
         public int SelectedHour
         {
@@ -19,8 +25,11 @@ namespace Jon.Wpf.CustomControls
                     var newTime = new DateTime(SelectedTime.Value.Year, SelectedTime.Value.Month, SelectedTime.Value.Day, value, SelectedMinute, 0);
                     SelectedTime = newTime;
                 }
+                OnPropertyChanged(nameof(SelectedHour));
+                System.Diagnostics.Debug.WriteLine("SelectedHour changed to " + value);
             }
         }
+
         public int SelectedMinute
         {
             get { return (SelectedTime.HasValue) ? SelectedTime.Value.Minute : DateTime.Now.Minute; }
@@ -31,8 +40,11 @@ namespace Jon.Wpf.CustomControls
                     var newTime = new DateTime(SelectedTime.Value.Year, SelectedTime.Value.Month, SelectedTime.Value.Day, SelectedHour, value, 0);
                     SelectedTime = newTime;
                 }
+                OnPropertyChanged(nameof(SelectedMinute));
+                System.Diagnostics.Debug.WriteLine("SelectedMinute changed to " + value);
             }
         }
+
         public int SelectedAmPm
         {
             get { return (SelectedTime.HasValue) ? (SelectedTime.Value.Hour >= 12 ? 1 : 0) : (DateTime.Now.Hour >= 12 ? 1 : 0); }
@@ -42,8 +54,18 @@ namespace Jon.Wpf.CustomControls
                 {
                     SetValue(SelectedAmPmProperty, value);
                 }
+                OnPropertyChanged(nameof(SelectedAmPm));
+                System.Diagnostics.Debug.WriteLine("SelectedAmPm changed to " + value);
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public DateTime? SelectedTime
         {
@@ -77,7 +99,12 @@ namespace Jon.Wpf.CustomControls
         public TimePicker()
         {
             SetCurrentValue(TimeFormatProperty, GetDefaultTimeFormat());
-            SelectedTime = DateTime.Now;
+            // Use Dispatcher to set SelectedTime
+            Dispatcher.BeginInvoke((Action)(() => SelectedTime = DateTime.Now), DispatcherPriority.ContextIdle);
+            this.DataContextChanged += (sender, args) =>
+            {
+                System.Diagnostics.Debug.WriteLine("New data context: " + DataContext);
+            };
         }
         public static readonly RoutedEvent SelectedTimeChangedEvent = EventManager.RegisterRoutedEvent(
                                                             "SelectedTimeChanged",
@@ -87,20 +114,26 @@ namespace Jon.Wpf.CustomControls
 
         // Group DependencyProperty fields together
         public static readonly DependencyProperty SelectedHourProperty = DependencyProperty.Register(
-            "SelectedHour",
-            typeof(int),
-            typeof(TimePicker),
-            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTimeChanged));
+    "SelectedHour",
+    typeof(int),
+    typeof(TimePicker),
+    new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedHourChanged));
+
         public static readonly DependencyProperty SelectedMinuteProperty = DependencyProperty.Register(
             "SelectedMinute",
             typeof(int),
             typeof(TimePicker),
-            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTimeChanged));
+            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedMinuteChanged));
+
         public static readonly DependencyProperty SelectedAmPmProperty = DependencyProperty.Register(
             "SelectedAmPm",
             typeof(int),
             typeof(TimePicker),
             new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedAmPmChanged));
+
+
+
+       
         public static readonly DependencyProperty SelectedTimeProperty = DependencyProperty.Register(
             "SelectedTime",
             typeof(DateTime?),
@@ -132,93 +165,23 @@ namespace Jon.Wpf.CustomControls
             remove { RemoveHandler(SelectedTimeChangedEvent, value); }
         }
 
-        //private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if (d is TimePicker timePicker)
-        //    {
-        //        // Check which property changed
-        //        if (e.Property == SelectedHourProperty || e.Property == SelectedMinuteProperty || e.Property == SelectedAmPmProperty)
-        //        {
-        //            // Handle SelectedHour, SelectedMinute, and SelectedAmPm changes
-        //            DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
-        //            int newHour = timePicker.SelectedHour;
-        //            int newMinute = timePicker.SelectedMinute;
 
-        //            if (timePicker.SelectedAmPm == 1 && newHour < 12)
-        //            {
-        //                newHour += 12;
-        //            }
-        //            else if (timePicker.SelectedAmPm == 0 && newHour >= 12)
-        //            {
-        //                newHour -= 12;
-        //            }
-
-        //            DateTime? newValue = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, newMinute, currentTime.Second);
-
-        //            // Don't raise the event here; we'll raise it after handling SelectedTime changes
-        //            timePicker.SelectedTime = newValue;
-        //        }
-        //        else if (e.Property == SelectedTimeProperty)
-        //        {
-        //            // Handle SelectedTime changes
-        //            DateTime? oldValue = (DateTime?)e.OldValue;
-        //            DateTime? newValue = (DateTime?)e.NewValue;
-
-        //            timePicker.RaiseSelectedTimeChangedEvent(oldValue, newValue);
-        //        }
-        //    }
-        //}
         private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is TimePicker timePicker)
             {
                 // Check which property changed
-                if (e.Property == SelectedHourProperty || e.Property == SelectedMinuteProperty || e.Property == SelectedAmPmProperty)
-                {
-                    // Handle SelectedHour, SelectedMinute, and SelectedAmPm changes
-                    DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
-                    int newHour = timePicker.SelectedHour;
-                    int newMinute = timePicker.SelectedMinute;
-
-                    if (timePicker.SelectedAmPm == 1 && newHour < 12)
-                    {
-                        newHour += 12;
-                    }
-                    else if (timePicker.SelectedAmPm == 0 && newHour >= 12)
-                    {
-                        newHour -= 12;
-                    }
-
-                    DateTime? newValue = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, newMinute, currentTime.Second);
-
-                    // Check to prevent recursive call
-                    if (timePicker.SelectedTime != newValue)
-                    {
-                        // Don't raise the event here; we'll raise it after handling SelectedTime changes
-                        timePicker.SelectedTime = newValue;
-                    }
-                }
-                else if (e.Property == SelectedTimeProperty)
+                if (e.Property == SelectedTimeProperty)
                 {
                     // Handle SelectedTime changes
                     DateTime? newValue = (DateTime?)e.NewValue;
 
-                    // Update SelectedHour, SelectedMinute, and SelectedAmPm according to the new SelectedTime
+                    // Update SelectedHour, SelectedMinute, and SelectedAmPm directly
                     if (newValue.HasValue)
                     {
-                        // Check to prevent recursive calls
-                        if (timePicker.SelectedHour != newValue.Value.Hour % 12)
-                        {
-                            timePicker.SelectedHour = newValue.Value.Hour % 12;
-                        }
-                        if (timePicker.SelectedMinute != newValue.Value.Minute)
-                        {
-                            timePicker.SelectedMinute = newValue.Value.Minute;
-                        }
-                        if (timePicker.SelectedAmPm != (newValue.Value.Hour >= 12 ? 1 : 0))
-                        {
-                            timePicker.SelectedAmPm = newValue.Value.Hour >= 12 ? 1 : 0;
-                        }
+                        timePicker.SelectedHour = newValue.Value.Hour % 12;
+                        timePicker.SelectedMinute = newValue.Value.Minute;
+                        timePicker.SelectedAmPm = newValue.Value.Hour >= 12 ? 1 : 0;
                     }
 
                     // Raise the SelectedTimeChanged event
@@ -228,6 +191,27 @@ namespace Jon.Wpf.CustomControls
             }
         }
 
+
+        private static void OnSelectedHourChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            TimePicker timePicker = (TimePicker)d;
+            // Store the new value of SelectedHour in the private field
+            timePicker.newSelectedHour = (int)e.NewValue;
+        }
+
+        private static void OnSelectedMinuteChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            TimePicker timePicker = (TimePicker)d;
+            // Store the new value of SelectedMinute in the private field
+            timePicker.newSelectedMinute = (int)e.NewValue;
+        }
+
+        private static void OnSelectedAmPmChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            TimePicker timePicker = (TimePicker)d;
+            // Store the new value of SelectedAmPm in the private field
+            timePicker.newSelectedAmPm = (int)e.NewValue;
+        }
 
 
 
@@ -244,29 +228,29 @@ namespace Jon.Wpf.CustomControls
                 }
             }
         }
-        private static void OnSelectedAmPmChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            TimePicker timePicker = (TimePicker)d;
-            if (timePicker.Is24HourFormat)
-            {
-                return;
-            }
+        //private static void OnSelectedAmPmChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //    TimePicker timePicker = (TimePicker)d;
+        //    if (timePicker.Is24HourFormat)
+        //    {
+        //        return;
+        //    }
 
-            int newAmPmValue = (int)e.NewValue;
-            DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
-            int newHour = currentTime.Hour;
+        //    int newAmPmValue = (int)e.NewValue;
+        //    DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
+        //    int newHour = currentTime.Hour;
 
-            if (newAmPmValue == 1 && newHour < 12)
-            {
-                newHour += 12;
-            }
-            else if (newAmPmValue == 0 && newHour >= 12)
-            {
-                newHour -= 12;
-            }
+        //    if (newAmPmValue == 1 && newHour < 12)
+        //    {
+        //        newHour += 12;
+        //    }
+        //    else if (newAmPmValue == 0 && newHour >= 12)
+        //    {
+        //        newHour -= 12;
+        //    }
 
-            timePicker.SelectedTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, currentTime.Minute, currentTime.Second);
-        }
+        //    timePicker.SelectedTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, currentTime.Minute, currentTime.Second);
+        //}
         private void RaiseSelectedTimeChangedEvent(DateTime? oldValue, DateTime? newValue)
         {
             RoutedPropertyChangedEventArgs<DateTime?> args = new(oldValue, newValue, SelectedTimeChangedEvent);
@@ -309,34 +293,23 @@ namespace Jon.Wpf.CustomControls
                 PopulateHourSelector(hourSelector);
                 PopulateMinuteSelector(minuteSelector);
 
-                hourSelector.SelectedItem = SelectedHour;
-                minuteSelector.SelectedItem = SelectedMinute.ToString("D2");
-                amPmSelector.SelectedIndex = SelectedAmPm;
-
-                hourSelector.SelectionChanged += (s, e) =>
+                // Use the new values stored in the private fields to update the SelectedIndex of the ComboBoxes
+                if (newSelectedHour.HasValue)
                 {
-                    if (hourSelector.SelectedItem != null)
-                    {
-                        SelectedHour = (int)hourSelector.SelectedItem;
-                    }
-                };
-
-                minuteSelector.SelectionChanged += (s, e) =>
+                    hourSelector.SelectedIndex = newSelectedHour.Value;
+                }
+                if (newSelectedMinute.HasValue)
                 {
-                    if (minuteSelector.SelectedItem != null)
-                    {
-                        SelectedMinute = int.Parse(minuteSelector.SelectedItem.ToString());
-                    }
-                };
-
-                amPmSelector.SelectionChanged += (s, e) =>
+                    minuteSelector.SelectedIndex = newSelectedMinute.Value;
+                }
+                if (newSelectedAmPm.HasValue)
                 {
-                    if (amPmSelector.SelectedItem != null)
-                    {
-                        SelectedAmPm = amPmSelector.SelectedIndex;
-                    }
-                };
+                    amPmSelector.SelectedIndex = newSelectedAmPm.Value;
+                }
+
+                // ...
             }
         }
+
     }
 }

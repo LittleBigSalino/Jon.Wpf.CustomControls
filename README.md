@@ -1,9 +1,8 @@
-
 # Jon.WPF.CustomControls
 
-Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface.
+Welcome to Jon.WPF.CustomControls, a .NET 7.0/6.0 WPF C# custom control library. This library aims to provide an assortment of WPF controls to enhance your application's user interface. 
 
-### *Help me make this a comprehensive set of useful controls. Contributions are welcome. Submit suggestions and please submit issues if you find them and I'll fix them*.
+*Help me make this a comprehensive set of useful controls. Contributions are welcome. Submit suggestions and please submit issues if you find them and I'll fix them*.
 
 ## Table of Contents
 
@@ -21,9 +20,6 @@ Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is b
 
 *RECOMMENDATIONS ARE WELCOME AND WANTED!!*
 
-
-
-
 ## Getting Started
 
 1. Open Visual Studio 2023 or later.
@@ -33,26 +29,19 @@ Jon.WPF.CustomControls is a collection of custom, reusable WPF controls. It is b
 5. Build your solution to ensure everything is set up correctly.
 6. Start using the controls in your projects!
 
-
 To use the controls, you want to add a reference to the library for your project, plus you will also need to load the default styles for the controls.
 
 To load the default styles, add the following to your App.xaml file:
 
 ```xml
-<Application
-    x:Class="ControlDriver.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    StartupUri="MainWindow.xaml">
-    <Application.Resources>
-        <!-- HERE --- >
-        <ResourceDictionary Source="pack://application:,,,/Jon.Wpf.CustomControls;component/Themes/Generic.xaml" />
-        <!-- HERE --- >
-    </Application.Resources>
+<Application x:Class="ControlDriver.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <!-- HERE --- >
+    <ResourceDictionary Source="pack://application:,,,/Jon.WPF.CustomControls;component/Themes/Generic.xaml" />
+    <!-- HERE --- >
+  </Application.Resources>
 </Application>
 ```
-
-
 
 ## Usage
 
@@ -68,79 +57,79 @@ You can then use the controls like any other WPF control:
 <custom:NumericUpDown x:Name="MyNumericUpDown" />
 ```
 
-## New OpenAI ChatGPT Integrated Controls
-
-![TextToSqlQueryTextBlock](https://i.imgur.com/ClJUlvN.png)
-
-![SentimentAnalysisLabel](https://i.imgur.com/OhONHpj.png)
-
-![SentimentAnalysisLabel](https://i.imgur.com/aLeWMtd.png)
-
-![SentimentAnalysisLabel](https://i.imgur.com/KG3eaqg.png)
-
-![AutoCompleteTextBox](https://i.imgur.com/4vOf2kj.png)
-
-![PersonPicture](https://i.imgur.com/1AAKcz8.png)
-
-![TtsReader](https://i.imgur.com/WjrNDhT.png)
-
-![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
-
-![NumericUpDown](https://i.imgur.com/m0Ey5nG.png?1)
-
-![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
-
-![TimePicker](https://i.imgur.com/TDHHsJs.png)
-
-*New TimeTextBox*
-
-![TimeTextBox](https://i.imgur.com/AP1x2Pb.png)
-
-![RatingControl](https://i.imgur.com/HcAQvb8.png)
-
-*New Expanded Capabilities* includes a CollectionControlWindow where items in the collection will each display their properties in it's propertygrid.
-
-![PropertyGrid](https://i.imgur.com/s5vxLn6.png)
-
-![ColorPickers](https://i.imgur.com/TBgGxj8.png) 
-
-![WizardControl](https://i.imgur.com/iI6KZhK.png)
-
-![Terminal Control](https://i.imgur.com/aMN3YlA.png)
-
-**New Calculator Control!**
-
-![Calculator](https://i.imgur.com/JeImAib.png)
-
-
 ## Controls
 
 This library currently includes the following controls:
 
-- [SentimentAnalysisLabel](./Docs/SentimentAnalysisLabel.md): Negative/Positive Sentiment Analysis Text you can bind to text for sentiment.
-- [SummarizationTextBlock](./Docs/SummarizationTextBlock.md): Summarization of bound text from Chat GPT.
-- [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed.
-- [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons. *NEW*
-- [WizardControl](./Docs/WizardControl.md): A control that presents a series of WizardPages to assist the user in performing a task or series of tasks. *NEW* 
-- [WizardPage](./Docs/WizardPage.md): A page within a WizardControl that contains content to guide the user through a specific part of the task. *NEW* 
-- [RgbColorPicker](./Docs/RGBColorPicker.md): A color picker control that allows users to select a color using RGB (Red, Green, Blue) components.
-- [ColorPaletteControl](./Docs/ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
-- [RatingControl](./Docs/RatingControl.md): A control for rating items on a scale.
-- [TimePicker](./Docs/TimePicker.md): A time selection control.
-- [TimeTextBox](./Docs/TimeTextBox.md): A time selection control.
-- [TtsReader](./Docs/TtsReader.md): A text to speech reading control.
-- [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
-- [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
-- [PersonPicture](./Docs/PersonPicture.md): Person Icon Status control.
-- [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object. Includes CollectionControl
-- [TerminalControl](./Docs/TerminalControl.md): A console terminal or a terminal for your application as well.
-- [Calculator](./Docs/Calculator.md): A drop-in working calculator control.
-- [TextToSqlQueryTextBlock](./Docs/TextToSqlQueryTextBlock.md): Translates English text into SQL queries using GPT-3 and displays the result. *NEW*
+- [TextToSqlQueryTextBlock](./Docs/TextToSqlQueryTextBlock.md): Translates English text into SQL queries using GPT-3 and displays the result.
+  
+  ![TextToSqlQueryTextBlock](https://i.imgur.com/ClJUlvN.png)
 
+- [SentimentAnalysisLabel](./Docs/SentimentAnalysisLabel.md): Negative/Positive Sentiment Analysis Text you can bind to text for sentiment.
+  
+  ![SentimentAnalysisLabel](https://i.imgur.com/OhONHpj.png)
+  ![SentimentAnalysisLabel](https://i.imgur.com/aLeWMtd.png)
+  ![SentimentAnalysisLabel](https://i.imgur.com/KG3eaqg.png)
+
+- [AutoCompleteTextBox](./Docs/AutoCompleteTextBox.md): A textbox control that automatically displays suggestions based on the filtered text typed.
+  
+  ![AutoCompleteTextBox](https://i.imgur.com/4vOf2kj.png)
+
+- [PersonPicture](./Docs/PersonPicture.md): Person Icon Status control.
+  
+  ![PersonPicture](https://i.imgur.com/1AAKcz8.png)
+
+- [TtsReader](./Docs/TtsReader.md): A text to speech reading control.
+  
+  ![TtsReader](https://i.imgur.com/WjrNDhT.png)
+
+- [ToggleSwitch](./Docs/ToggleSwitch.md): A binary selection control, similar to a checkbox, but with a sleek design.
+  
+  ![ToggleSwitch](https://i.imgur.com/aaNDcSU.png)
+
+- [NumericUpDown](./Docs/NumericUpDown.md): A NumericUpDown control that allows users to increase or decrease a numeric value with up and down buttons.
+  
+  ![NumericUpDown](https://i.imgur.com/m0Ey5nG.png?1)
+
+- [WatermarkTextbox](./Docs/WatermarkTextbox.md): A text box with a placeholder text feature, also known as watermark.
+  
+  ![WatermarkTextBox](https://i.imgur.com/TB8I9Nu.png)
+
+- [TimePicker](./Docs/TimePicker.md): A time selection control.
+  
+  ![TimePicker](https://i.imgur.com/TDHHsJs.png)
+
+- [TimeTextBox](./Docs/TimeTextBox.md): A time selection control.
+  
+  ![TimeTextBox](https://i.imgur.com/AP1x2Pb.png)
+
+- [RatingControl](./Docs/RatingControl.md): A control for rating items on a scale.
+  
+  ![RatingControl](https://i.imgur.com/HcAQvb8.png)
+
+- [PropertyGrid](./Docs/PropertyGrid.md): A control for displaying and editing the properties of an object. Includes CollectionControl
+  
+  ![PropertyGrid](https://i.imgur.com/s5vxLn6.png)
+
+- [ColorPaletteControl](./Docs/ColorPaletteControl.md): A color palette control that provides a grid of colors for the user to choose from.
+  
+  ![ColorPickers](https://i.imgur.com/TBgGxj8.png)
+
+- [WizardControl](./Docs/WizardControl.md): A control that presents a series of WizardPages to assist the user in performing a task or series of tasks.
+  
+  ![WizardControl](https://i.imgur.com/iI6KZhK.png)
+
+- [TerminalControl](./Docs/TerminalControl.md): A console terminal or a terminal for your application as well.
+  
+  ![Terminal Control](https://i.imgur.com/aMN3YlA.png)
+
+- [Calculator](./Docs/Calculator.md): A drop-in working calculator control.
+  
+  ![Calculator](https://i.imgur.com/JeImAib.png)
 
 Please refer to each control's documentation for more details.
 
-Remember to create the corresponding `WizardControl
+Please refer to each control's documentation for more details.
 
 ## Converters
 
@@ -158,10 +147,11 @@ Converters are used in WPF to transform data from one type to another. They are 
 - `HalfSizeConverter`: Takes a size and returns half of it. Useful for positioning or sizing elements relative to others.
 - `DateTimeToAmPmConverter`: Converts a `DateTime` to a string representing either "AM" or "PM".
 - `SelectorValuesToDateTimeConverter`: Converts selector values to a `DateTime`. Used in the `TimePicker` control.
-- `ColorEqualityConverter`: Checks if two colors are equal. Useful for color comparison scenarios.
+- `ColorEqualityConverter`: Checks if two colors are equal. Useful for
+
+color comparison scenarios.
 - `ColorToNameConverter`: Converts a `Color` to its name as a string, if it has one.
 - `PropertyNameConverter`: Converts a property name to a more user-friendly format.
-
 
 Please note that the exact behavior of each converter may depend on its implementation and usage in the controls.
 
@@ -175,4 +165,5 @@ This project is licensed under the MIT License. For more information, see the [L
 
 ## Contact
 
-If you have any questions, feel free to reach out to us. You can contact us via [email](mailto:jonsales@jonmsales.com) or create an issue on our [GitHub](https://github.com/yourusername/Jon.WPF.CustomControls/issues) page. We'll do our best to respond as quickly as possible.
+If you have any questions, feel free to reach out to us. You can contact us via [email](mailto:jonsales@jonmsales.com) or create an issue on our [GitHub](https://github.com/LittleBigSalino/Jon.Wpf.CustomControls/issues) page.
+

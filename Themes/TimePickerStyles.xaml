@@ -6,7 +6,7 @@
     <converters:DateTimeToAmPmConverter x:Key="DateTimeToAmPmConverter" />
     <converters:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
     <converters:SelectorValuesToDateTimeConverter x:Key="SelectorValuesToDateTimeConverter" />
-
+    <converters:TimeToPartsConverter x:Key="TimeToPartsConverter" />
     <Style x:Key="TimePickerModernLight" TargetType="{x:Type local:TimePicker}">
         <Setter Property="Background" Value="#FF3B3B3B" />
         <Setter Property="BorderBrush" Value="#FFB3A2A2" />
@@ -57,8 +57,14 @@
                                     BorderThickness="1"
                                     FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="{TemplateBinding FontSize}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    SelectedIndex="{Binding SelectedHour, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
+                                    Foreground="{TemplateBinding Foreground}">
+                                    <ComboBox.SelectedItem>
+                                        <MultiBinding Converter="{StaticResource TimeToPartsConverter}">
+                                            <Binding Path="SelectedTime" />
+                                            <Binding Path="SelectedHour" />
+                                        </MultiBinding>
+                                    </ComboBox.SelectedItem>
+                                </ComboBox>
 
                                 <TextBlock
                                     Margin="1,0,1,0"
@@ -76,8 +82,14 @@
                                     VerticalContentAlignment="Center"
                                     FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="{TemplateBinding FontSize}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    SelectedIndex="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedMinute}" />
+                                    Foreground="{TemplateBinding Foreground}">
+                                    <ComboBox.SelectedItem>
+                                        <MultiBinding Converter="{StaticResource TimeToPartsConverter}">
+                                            <Binding Path="SelectedTime" />
+                                            <Binding Path="SelectedMinute" />
+                                        </MultiBinding>
+                                    </ComboBox.SelectedItem>
+                                </ComboBox>
                                 <ComboBox
                                     x:Name="AmPmSelector"
                                     Width="50"
@@ -89,11 +101,11 @@
                                     FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="{TemplateBinding FontSize}"
                                     Foreground="{TemplateBinding Foreground}"
-                                    SelectedIndex="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedAmPm, Mode=TwoWay}"
                                     Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimePicker}}, Path=Is24HourFormat, Converter={StaticResource BoolToCollapsedConverter}, ConverterParameter=collapsed}">
                                     <ComboBoxItem Content="AM" />
                                     <ComboBoxItem Content="PM" />
                                 </ComboBox>
+
                             </StackPanel>
                         </Grid>
                     </Border>

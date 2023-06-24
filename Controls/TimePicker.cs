@@ -1,6 +1,8 @@
 ﻿
 
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -78,6 +80,9 @@ namespace Jon.Wpf.CustomControls
         {
             SetCurrentValue(TimeFormatProperty, GetDefaultTimeFormat());
             SelectedTime = DateTime.Now;
+
+            // Add PropertyChanged event handler
+            
         }
         public static readonly RoutedEvent SelectedTimeChangedEvent = EventManager.RegisterRoutedEvent(
                                                             "SelectedTimeChanged",
@@ -132,42 +137,72 @@ namespace Jon.Wpf.CustomControls
             remove { RemoveHandler(SelectedTimeChangedEvent, value); }
         }
 
-        //private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if (d is TimePicker timePicker)
-        //    {
-        //        // Check which property changed
-        //        if (e.Property == SelectedHourProperty || e.Property == SelectedMinuteProperty || e.Property == SelectedAmPmProperty)
-        //        {
-        //            // Handle SelectedHour, SelectedMinute, and SelectedAmPm changes
-        //            DateTime currentTime = timePicker.SelectedTime.HasValue ? timePicker.SelectedTime.Value : DateTime.Now;
-        //            int newHour = timePicker.SelectedHour;
-        //            int newMinute = timePicker.SelectedMinute;
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
 
-        //            if (timePicker.SelectedAmPm == 1 && newHour < 12)
-        //            {
-        //                newHour += 12;
-        //            }
-        //            else if (timePicker.SelectedAmPm == 0 && newHour >= 12)
-        //            {
-        //                newHour -= 12;
-        //            }
+            if (e.Property == SelectedTimeProperty)
+            {
+                // Update ComboBoxes
+                var hourSelector = GetTemplateChild("PART_HourSelector") as ComboBox;
+                var minuteSelector = GetTemplateChild("PART_MinuteSelector") as ComboBox;
+                var amPmSelector = GetTemplateChild("AmPmSelector") as ComboBox;
 
-        //            DateTime? newValue = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, newHour, newMinute, currentTime.Second);
+                if (hourSelector != null)
+                {
+                    hourSelector.SelectedItem = SelectedHour;
+                }
 
-        //            // Don't raise the event here; we'll raise it after handling SelectedTime changes
-        //            timePicker.SelectedTime = newValue;
-        //        }
-        //        else if (e.Property == SelectedTimeProperty)
-        //        {
-        //            // Handle SelectedTime changes
-        //            DateTime? oldValue = (DateTime?)e.OldValue;
-        //            DateTime? newValue = (DateTime?)e.NewValue;
+                if (minuteSelector != null)
+                {
+                    minuteSelector.SelectedItem = SelectedMinute.ToString("D2");
+                }
 
-        //            timePicker.RaiseSelectedTimeChangedEvent(oldValue, newValue);
-        //        }
-        //    }
-        //}
+                //if (amPmSelector != null)
+                //{
+                //    amPmSelector.SelectedItem = SelectedAmPm == 1 ? "PM" : "AM";
+                //}
+                if (amPmSelector != null)
+                {
+                    var newAmPm = SelectedAmPm == 1 ? "PM" : "AM";
+                    var itemToSelect = amPmSelector.Items.Cast<ComboBoxItem>().FirstOrDefault(item => item.Content as string == newAmPm);
+                    if (itemToSelect != null && amPmSelector.SelectedItem != itemToSelect)
+                    {
+                        amPmSelector.SelectedItem = itemToSelect;
+                    }
+                }
+
+            }
+        }
+
+
+
+        private void TimePicker_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedTime))
+            {
+                // Update ComboBoxes
+                var hourSelector = GetTemplateChild("PART_HourSelector") as ComboBox;
+                var minuteSelector = GetTemplateChild("PART_MinuteSelector") as ComboBox;
+                var amPmSelector = GetTemplateChild("AmPmSelector") as ComboBox;
+
+                if (hourSelector != null)
+                {
+                    hourSelector.SelectedItem = SelectedHour;
+                }
+
+                if (minuteSelector != null)
+                {
+                    minuteSelector.SelectedItem = SelectedMinute.ToString("D2");
+                }
+
+                if (amPmSelector != null)
+                {
+                    amPmSelector.SelectedIndex = SelectedAmPm;
+                }
+            }
+        }
+
         private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is TimePicker timePicker)
@@ -308,34 +343,38 @@ namespace Jon.Wpf.CustomControls
             {
                 PopulateHourSelector(hourSelector);
                 PopulateMinuteSelector(minuteSelector);
-
                 hourSelector.SelectedItem = SelectedHour;
                 minuteSelector.SelectedItem = SelectedMinute.ToString("D2");
                 amPmSelector.SelectedIndex = SelectedAmPm;
 
-                hourSelector.SelectionChanged += (s, e) =>
-                {
-                    if (hourSelector.SelectedItem != null)
-                    {
-                        SelectedHour = (int)hourSelector.SelectedItem;
-                    }
-                };
+                // Add SelectionChanged event handlers
+                hourSelector.SelectionChanged += HourSelector_SelectionChanged;
+                minuteSelector.SelectionChanged += MinuteSelector_SelectionChanged;
+                amPmSelector.SelectionChanged += AmPmSelector_SelectionChanged;
+            }
+        }
 
-                minuteSelector.SelectionChanged += (s, e) =>
-                {
-                    if (minuteSelector.SelectedItem != null)
-                    {
-                        SelectedMinute = int.Parse(minuteSelector.SelectedItem.ToString());
-                    }
-                };
+        private void HourSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox hourSelector && hourSelector.SelectedItem is int selectedHour)
+            {
+                SelectedHour = selectedHour;
+            }
+        }
 
-                amPmSelector.SelectionChanged += (s, e) =>
-                {
-                    if (amPmSelector.SelectedItem != null)
-                    {
-                        SelectedAmPm = amPmSelector.SelectedIndex;
-                    }
-                };
+        private void MinuteSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox minuteSelector && minuteSelector.SelectedItem is string selectedMinuteStr && int.TryParse(selectedMinuteStr, out int selectedMinute))
+            {
+                SelectedMinute = selectedMinute;
+            }
+        }
+
+        private void AmPmSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox amPmSelector && amPmSelector.SelectedItem is string selectedAmPm)
+            {
+                SelectedAmPm = selectedAmPm == "PM" ? 1 : 0;
             }
         }
     }

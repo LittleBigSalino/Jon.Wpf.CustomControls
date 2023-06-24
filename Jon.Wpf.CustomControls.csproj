@@ -13,11 +13,11 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>wpf .net core controls Wpf Extended TimePicker PropertyGrid ColorPicker Rating Custom Converters Wizard NumericUpDown ColorPicker ToggleSwitch Terminal Calculator Person Picture ChatGPT OpenAI TextToSqlQuery SentimentAnalysis Summarization</PackageTags>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>2.31</AssemblyVersion>
-    <FileVersion>2.31</FileVersion>
+    <AssemblyVersion>2.02</AssemblyVersion>
+    <FileVersion>2.02</FileVersion>
     <ApplicationIcon>wpfmostwanted.ico</ApplicationIcon>
     <PackageIcon>wpfmostwanted.png</PackageIcon>
-    <Version>2.31</Version>
+    <Version>2.02</Version>
     <Authors>Jon M. Sales</Authors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sgKey.snk</AssemblyOriginatorKeyFile>

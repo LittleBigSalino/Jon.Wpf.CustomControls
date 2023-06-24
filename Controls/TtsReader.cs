@@ -85,6 +85,21 @@ namespace Jon.Wpf.CustomControls
             }
             
         }
+        public async Task PlayTextToSpeech(int pauseBetweenWords)
+        {
+            // Split the text into words
+            var words = Text.Split(' ');
+
+            foreach (var word in words)
+            {
+                // Speak the word
+                synth.Speak(word);
+
+                // Wait for the specified pause duration
+                await Task.Delay(pauseBetweenWords);
+            }
+        }
+
 
         // This method will be called when the settings button is clicked
         private void OpenSettingsWindow()
@@ -98,25 +113,35 @@ namespace Jon.Wpf.CustomControls
             }
         }
 
-      
+
 
 
         // TODO: Implement the logic for changing the voice based on the system voices
         public void ChangeVoice(string voice)
         {
-            throw new NotImplementedException();
+            // Check if the voice is installed on the system
+            if (synth.GetInstalledVoices().Any(v => v.VoiceInfo.Name == voice))
+            {
+                synth.SelectVoice(voice);
+            }
+            else
+            {
+                throw new ArgumentException($"The voice '{voice}' is not installed on this system.");
+            }
         }
 
-        // TODO: Implement the logic for changing the speed
         public void ChangeSpeed(int speed)
         {
-            throw new NotImplementedException();
+            // Check if the speed is within the valid range
+            if (speed >= -10 && speed <= 10)
+            {
+                synth.Rate = speed;
+            }
+            else
+            {
+                throw new ArgumentException("The speed must be between -10 and 10.");
+            }
         }
 
-        // TODO: Implement the logic for changing the cadence
-        public void ChangeCadence(int cadence)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -5,32 +5,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace Jon.Wpf.CustomControls
 {
-
     public class AutocompleteTextBox : TextBox, INotifyPropertyChanged
     {
-        public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
-    "SelectedItem", typeof(object), typeof(AutocompleteTextBox), new PropertyMetadata(null));
-
         public object SelectedItem
         {
             get { return GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private bool _isDropDownOpen;
         public bool IsDropDownOpen
         {
             get { return _isDropDownOpen; }
@@ -40,7 +25,86 @@ namespace Jon.Wpf.CustomControls
                 OnPropertyChanged();
             }
         }
+        public ICommand ShowSuggestionsCommand
+        {
+            get { return (ICommand)GetValue(ShowSuggestionsCommandProperty); }
+            set { SetValue(ShowSuggestionsCommandProperty, value); }
+        }
+        public IEnumerable FilteredItemsSource
+        {
+            get { return (IEnumerable)GetValue(FilteredItemsSourceProperty); }
+            set { SetValue(FilteredItemsSourceProperty, value); }
+        }
+        public IEnumerable ItemsSource
+        {
+            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+        public string SuggestionsDisplayMemberPath
+        {
+            get { return (string)GetValue(SuggestionsDisplayMemberPathProperty); }
+            set { SetValue(SuggestionsDisplayMemberPathProperty, value); }
+        }
+        public ICommand SelectSuggestionCommand
+        {
+            get { return (ICommand)GetValue(SelectSuggestionCommandProperty); }
+            set { SetValue(SelectSuggestionCommandProperty, value); }
+        }
+        public ICommand FocusListBoxCommand
+        {
+            get { return (ICommand)GetValue(FocusListBoxCommandProperty); }
+            set { SetValue(FocusListBoxCommandProperty, value); }
+        }
+        public AutocompleteTextBox()
+        {
+            SelectSuggestionCommand = new RelayCommand<object>(SelectSuggestion);
+            ShowSuggestionsCommand = new RelayCommand<object>(ShowSuggestions);
+            FocusListBoxCommand = new RelayCommand<object>(_ => FocusListBox());
+        }
+        private bool _isDropDownOpen;
+        private ListBox _listBox;
+        public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register("SelectedItem", typeof(object), typeof(AutocompleteTextBox), new PropertyMetadata(null));
+        public static readonly DependencyProperty ShowSuggestionsCommandProperty = DependencyProperty.Register("ShowSuggestionsCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
+        public static readonly DependencyProperty FilteredItemsSourceProperty = DependencyProperty.Register("FilteredItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(default(IEnumerable)));
+        public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(null));
+        public static readonly DependencyProperty SuggestionsDisplayMemberPathProperty = DependencyProperty.Register("SuggestionsDisplayMemberPath", typeof(string), typeof(AutocompleteTextBox), new PropertyMetadata(null));
+        public static readonly DependencyProperty SelectSuggestionCommandProperty = DependencyProperty.Register("SelectSuggestionCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(null));
+        public static readonly DependencyProperty FocusListBoxCommandProperty = DependencyProperty.Register("FocusListBoxCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        private void ShowSuggestions(object obj)
+        {
+            IsDropDownOpen = true;
+        }
+        private void FocusListBox()
+        {
+            _listBox?.Focus();
+        }
+        private string GetDisplayString(object item)
+        {
+            if (string.IsNullOrEmpty(SuggestionsDisplayMemberPath))
+            {
+                return item.ToString();
+            }
+
+            var property = TypeDescriptor.GetProperties(item)[SuggestionsDisplayMemberPath];
+            return property?.GetValue(item)?.ToString() ?? string.Empty;
+        }
+        private void SelectSuggestion(object item)
+        {
+            // Set the text of the TextBox to the selected suggestion
+            Text = GetDisplayString(item);
+
+            // Set the SelectedItem property to the selected item
+            SelectedItem = item;
+
+            // Hide the Popup
+            IsDropDownOpen = false;
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
@@ -58,74 +122,6 @@ namespace Jon.Wpf.CustomControls
             // Show the Popup if there are any filtered items
             IsDropDownOpen = filteredItems.Any();
         }
-
-        public static readonly DependencyProperty ShowSuggestionsCommandProperty = DependencyProperty.Register(
-     "ShowSuggestionsCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
-
-        public ICommand ShowSuggestionsCommand
-        {
-            get { return (ICommand)GetValue(ShowSuggestionsCommandProperty); }
-            set { SetValue(ShowSuggestionsCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty FilteredItemsSourceProperty = DependencyProperty.Register(
-            "FilteredItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(default(IEnumerable)));
-
-        public IEnumerable FilteredItemsSource
-        {
-            get { return (IEnumerable)GetValue(FilteredItemsSourceProperty); }
-            set { SetValue(FilteredItemsSourceProperty, value); }
-        }
-
-
-        public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
-            "ItemsSource", typeof(IEnumerable), typeof(AutocompleteTextBox), new PropertyMetadata(null));
-
-        public IEnumerable ItemsSource
-        {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
-        }
-
-        public static readonly DependencyProperty SuggestionsDisplayMemberPathProperty = DependencyProperty.Register(
-            "SuggestionsDisplayMemberPath", typeof(string), typeof(AutocompleteTextBox), new PropertyMetadata(null));
-
-        public string SuggestionsDisplayMemberPath
-        {
-            get { return (string)GetValue(SuggestionsDisplayMemberPathProperty); }
-            set { SetValue(SuggestionsDisplayMemberPathProperty, value); }
-        }
-
-        public static readonly DependencyProperty SelectSuggestionCommandProperty = DependencyProperty.Register(
-            "SelectSuggestionCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(null));
-
-        public ICommand SelectSuggestionCommand
-        {
-            get { return (ICommand)GetValue(SelectSuggestionCommandProperty); }
-            set { SetValue(SelectSuggestionCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty FocusListBoxCommandProperty = DependencyProperty.Register(
-    "FocusListBoxCommand", typeof(ICommand), typeof(AutocompleteTextBox), new PropertyMetadata(default(ICommand)));
-
-        public ICommand FocusListBoxCommand
-        {
-            get { return (ICommand)GetValue(FocusListBoxCommandProperty); }
-            set { SetValue(FocusListBoxCommandProperty, value); }
-        }
-
-        public AutocompleteTextBox()
-        {
-            SelectSuggestionCommand = new RelayCommand<object>(SelectSuggestion);
-            ShowSuggestionsCommand = new RelayCommand<object>(ShowSuggestions);
-            FocusListBoxCommand = new RelayCommand<object>(_ => FocusListBox());
-        }
-
-        private void ShowSuggestions(object obj)
-        {
-            IsDropDownOpen = true;
-        }
-
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseDown(e);
@@ -133,21 +129,6 @@ namespace Jon.Wpf.CustomControls
             // Set focus to the TextBox
             Focus();
         }
-
-        private ListBox _listBox;
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            _listBox = GetTemplateChild("PART_ListBox") as ListBox;
-        }
-
-        private void FocusListBox()
-        {
-            _listBox?.Focus();
-        }
-
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
             base.OnTextChanged(e);
@@ -163,31 +144,6 @@ namespace Jon.Wpf.CustomControls
             // Show the Popup if there are any filtered items
             IsDropDownOpen = filteredItems.Any();
         }
-
-        private string GetDisplayString(object item)
-        {
-            if (string.IsNullOrEmpty(SuggestionsDisplayMemberPath))
-            {
-                return item.ToString();
-            }
-
-            var property = TypeDescriptor.GetProperties(item)[SuggestionsDisplayMemberPath];
-            return property?.GetValue(item)?.ToString() ?? string.Empty;
-        }
-
-        private void SelectSuggestion(object item)
-        {
-            // Set the text of the TextBox to the selected suggestion
-            Text = GetDisplayString(item);
-
-            // Set the SelectedItem property to the selected item
-            SelectedItem = item;
-
-            // Hide the Popup
-            IsDropDownOpen = false;
-        }
-
-
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             base.OnPreviewKeyDown(e);
@@ -222,8 +178,12 @@ namespace Jon.Wpf.CustomControls
                 e.Handled = true;
             }
         }
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
 
-
+            _listBox = GetTemplateChild("PART_ListBox") as ListBox;
+        }
     }
 
 }

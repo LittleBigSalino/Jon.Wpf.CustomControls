@@ -22,9 +22,7 @@ namespace Jon.Wpf.CustomControls
     {
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
             "Text", typeof(string), typeof(TtsReader), new PropertyMetadata(default(string)));
-
-        
-
+       
         private SpeechSynthesizer synth;
 
         public static readonly DependencyProperty PlayStopCommandProperty = DependencyProperty.Register(

@@ -89,6 +89,9 @@ namespace Jon.Wpf.CustomControls
             Value = "0";
         }
 
+
+
+
         public void Calculate()
         {
             double result = 0;
